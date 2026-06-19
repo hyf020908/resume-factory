@@ -1,0 +1,112 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{bg}{HTML}{05080E}
+\definecolor{panel}{HTML}{0A111C}
+\definecolor{line}{HTML}{263448}
+\definecolor{cyan}{HTML}{00F5FF}
+\definecolor{purple}{HTML}{8D35FF}
+\definecolor{whiteish}{HTML}{E9F0FF}
+\fill[bg] (current page.south west) rectangle (current page.north east);
+\foreach \x/\y/\r/\c in {3/3/4/cyan,17/5/3/purple,11/18/5/purple,5/25/3/cyan}{\shade[inner color=\c,outer color=bg,opacity=.12] ($(current page.south west)+(\x,\y)$) circle (\r cm);}
+\draw[line!85,rounded corners=10pt,line width=.8pt] ($(current page.north west)+(0.55,-1.1)$) rectangle ($(current page.south east)+(-0.55,0.55)$);
+\putnode[font=\monolatin\scriptsize\bfseries,text=cyan]{1.1cm}{.72cm}{4cm}{› RESUME.SYSTEM}
+\putnode[font=\monolatin\scriptsize,text=whiteish!70,align=right]{17.6cm}{.72cm}{2cm}{v1.0.0}
+\draw[cyan,line width=.8pt] ($(current page.north east)+(-1.95,-.76)$)--++(.25,0);
+\draw[cyan,line width=.8pt] ($(current page.north east)+(-1.25,-.66)$) rectangle ++(.22,-.22);
+\draw[cyan,line width=.8pt] ($(current page.north east)+(-.45,-.65)$)--++(.18,-.18) ($(current page.north east)+(-.27,-.65)$)--++(-.18,-.18);
+\foreach \x in {9.2,9.5,9.8,10.1,11.6,11.9,12.2}{\draw[purple!50,line width=1.2pt] ($(current page.north west)+(\x,-.76)$)--++(.08,0);}
+\draw[purple,line width=1.4pt] ($(current page.north west)+(10.25,-.76)$)--++(1.25,0);
+
+\draw[line,rounded corners=8pt,fill=panel,blur shadow={shadow blur steps=5,shadow opacity=.25}] ($(current page.north west)+(0.55,-1.15)$) rectangle ($(current page.north west)+(20.45,-4.95)$);
+\putnode[font=\sffamily\bfseries\fontsize{30}{34}\selectfont\addfontfeatures{LetterSpace=12},text=whiteish]{1.3cm}{1.95cm}{7.9cm}{YOUR NAME\textcolor{purple}{\rule{.7cm}{.08cm}}}
+\putnode[font=\monolatin\Large\bfseries,text=cyan]{1.42cm}{3.42cm}{6cm}{FULL STACK DEVELOPER}
+\putnode[font=\monolatin\small,text=whiteish!60]{1.42cm}{4.1cm}{7.5cm}{[ BUILDER  ✦  PROBLEM SOLVER  ✦  TECH ENTHUSIAST ]}
+\draw[line,rounded corners=6pt,fill=bg!60] ($(current page.north west)+(11.25,-1.52)$) rectangle ($(current page.north west)+(16.35,-4.58)$);
+\putnode[font=\monolatin\scriptsize,text=whiteish]{11.65cm}{1.78cm}{4.3cm}{\textcolor{cyan}{\faIcon{envelope}}\quad youremail@example.com\\[8pt]\textcolor{cyan}{\faIcon{phone}}\quad +1 (555) 123-4567\\[8pt]\textcolor{cyan}{\faIcon{map-marker-alt}}\quad San Francisco, CA\\[8pt]\textcolor{cyan}{\faIcon{globe}}\quad yourwebsite.dev\\[8pt]\textcolor{cyan}{\faIcon{github}}\quad github.com/yourusername}
+\draw[line,densely dotted,rounded corners=5pt] ($(current page.north west)+(17.0,-1.52)$) rectangle ($(current page.north west)+(20.0,-4.58)$);
+\node[font=\monolatin\fontsize{28}{30}\selectfont\bfseries,text=purple] at ($(current page.north west)+(18.5,-3.0)$) {</>};
+
+% panels
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(0.55,-5.25)$) rectangle ($(current page.north west)+(12.6,-12.15)$);
+\putnode[font=\monolatin\bfseries\large,text=cyan]{1.0cm}{5.7cm}{5cm}{// ABOUT ME}
+\draw[cyan!60,line width=.7pt] ($(current page.north west)+(1.1,-6.1)$)--++(0,-2.0);
+\putnode[font=\monolatin\small,text=whiteish!82]{1.7cm}{6.35cm}{8.8cm}{Passionate developer with experience building\\modern web applications and scalable systems.\\I love turning complex problems into simple,\\beautiful and intuitive solutions.}
+\draw[line,line width=.5pt] ($(current page.north west)+(1.0,-8.95)$)--($(current page.north west)+(12.1,-8.95)$);
+\putnode[font=\monolatin\scriptsize,text=whiteish]{1.15cm}{9.35cm}{2cm}{FOCUS}
+\draw[line,line width=.4pt] ($(current page.north west)+(6.15,-8.9)$)--++(0,-2.7);
+\draw[line width=8pt,purple] ($(current page.north west)+(2.1,-10.8)$) circle (.62cm);
+\draw[line width=8pt,cyan] ($(current page.north west)+(2.1,-10.8)$) ++(90:.62cm) arc (90:-70:.62cm);
+\node[circle,fill=panel,minimum size=1cm] at ($(current page.north west)+(2.1,-10.8)$) {};
+\putnode[font=\monolatin\scriptsize,text=whiteish!85]{3.55cm}{9.85cm}{2.4cm}{\textcolor{cyan}{●} Frontend \hfill 60\%\\[4pt]\textcolor{purple}{●} Backend \hfill 30\%\\[4pt]\textcolor{purple!70}{●} DevOps \hfill 10\%}
+\putnode[font=\monolatin\scriptsize,text=whiteish]{6.55cm}{9.35cm}{2cm}{ACTIVITY\\\textcolor{whiteish!50}{(Last 12 Weeks)}}
+\draw[whiteish!20,line width=.3pt] ($(current page.north west)+(7.1,-11.1)$)--++(4.4,0);
+\draw[cyan,line width=.8pt] plot[smooth] coordinates {($(current page.north west)+(7.2,-10.75)$) ($(current page.north west)+(7.7,-10.35)$) ($(current page.north west)+(8.2,-10.55)$) ($(current page.north west)+(8.75,-10.25)$) ($(current page.north west)+(9.2,-10.6)$) ($(current page.north west)+(9.75,-10.15)$) ($(current page.north west)+(10.3,-10.42)$) ($(current page.north west)+(10.9,-10.2)$) ($(current page.north west)+(11.5,-9.6)$)};
+\draw[purple,line width=.8pt] plot[smooth] coordinates {($(current page.north west)+(7.2,-11.05)$) ($(current page.north west)+(7.8,-10.8)$) ($(current page.north west)+(8.4,-10.78)$) ($(current page.north west)+(9.0,-11.1)$) ($(current page.north west)+(9.6,-10.92)$) ($(current page.north west)+(10.3,-10.78)$) ($(current page.north west)+(11.0,-11.15)$) ($(current page.north west)+(11.5,-10.85)$)};
+
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(12.85,-5.25)$) rectangle ($(current page.north west)+(20.45,-12.15)$);
+\putnode[font=\monolatin\bfseries\large,text=cyan]{13.25cm}{5.7cm}{4cm}{// SKILLS}
+\foreach \name/\pct/\y/\len in {JavaScript/95\%/6.45/3.30,TypeScript/90\%/7.05/3.10,React/92\%/7.65/3.20,Next.js/88\%/8.25/3.00,Node.js/85\%/8.85/2.90,Python/80\%/9.45/2.70,PostgreSQL/78\%/10.05/2.60,Docker/75\%/10.65/2.48,AWS/72\%/11.25/2.35,GraphQL/70\%/11.85/2.25}{\node[anchor=west,font=\monolatin\scriptsize,text=whiteish] at ($(current page.north west)+(13.35,-\y)$){\name};\draw[whiteish!12,line width=2.2pt,line cap=round] ($(current page.north west)+(15.5,-\y)$)--++(3.6,0);\draw[line width=2.2pt,line cap=round] ($(current page.north west)+(15.5,-\y)$)--++(\len,0);\node[anchor=west,font=\monolatin\scriptsize,text=purple!80] at ($(current page.north west)+(19.35,-\y)$){\pct};}
+
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(0.55,-12.45)$) rectangle ($(current page.north west)+(12.6,-21.0)$);
+\putnode[font=\monolatin\bfseries\large,text=cyan]{1.0cm}{12.9cm}{4cm}{// EXPERIENCE}
+\draw[purple,line width=.8pt] ($(current page.north west)+(3.35,-13.75)$)--++(0,-5.9);
+\foreach \y in {13.75,16.25,18.75}{\shade[inner color=purple,outer color=purple!20] ($(current page.north west)+(3.35,-\y)$) circle (.11cm);}
+\putnode[font=\monolatin\scriptsize,text=whiteish!75]{1.0cm}{13.65cm}{2.0cm}{2022 -- PRESENT}
+\putnode[font=\monolatin\small,text=whiteish!88]{3.8cm}{13.65cm}{7.9cm}{\textbf{SENIOR FULL STACK DEVELOPER} \textcolor{purple}{/ Acme Systems}\\Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\Sed do eiusmod tempor incididunt ut labore et dolore magna\\aliqua. Ut enim ad minim veniam.\\[3pt]\textcolor{cyan}{\fbox{REACT} \fbox{TYPESCRIPT} \fbox{NODE.JS} \fbox{AWS}}\\[12pt]\textbf{FULL STACK DEVELOPER} \textcolor{purple}{/ DevSolutions}\\Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\Sed do eiusmod tempor incididunt ut labore et dolore magna\\aliqua. Ut enim ad minim veniam.\\[3pt]\textcolor{cyan}{\fbox{NEXT.JS} \fbox{POSTGRESQL} \fbox{DOCKER} \fbox{GRAPHQL}}\\[12pt]\textbf{FRONTEND DEVELOPER} \textcolor{purple}{/ Pixel Studio}\\Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\Sed do eiusmod tempor incididunt ut labore et dolore magna\\aliqua.\\[3pt]\textcolor{cyan}{\fbox{JAVASCRIPT} \fbox{HTML} \fbox{CSS} \fbox{SASS}}}
+\putnode[font=\monolatin\scriptsize,text=whiteish!75]{1.0cm}{16.15cm}{2.0cm}{2020 -- 2022}
+\putnode[font=\monolatin\scriptsize,text=whiteish!75]{1.0cm}{18.65cm}{2.0cm}{2018 -- 2020}
+
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(12.85,-12.45)$) rectangle ($(current page.north west)+(20.45,-16.8)$);
+\foreach \x/\y/\icon/\big/\small in {14.2/13.55/rocket/15+/PROJECTS\\Completed,17.1/13.55/code/4+/YEARS\\Experience,14.2/15.35/users/10+/CLIENTS\\Worldwide,17.1/15.35/trophy/3/AWARDS\\Received}{\draw[line,rounded corners=6pt,fill=bg!55] ($(current page.north west)+(\x-1.1,-\y+.45)$) rectangle ++(2.55,-1.25);\node[text=purple,font=\Large] at ($(current page.north west)+(\x-0.5,-\y+.03)$){\faIcon{\icon}};\node[anchor=west,font=\monolatin\Large\bfseries,text=cyan] at ($(current page.north west)+(\x+.05,-\y+.0)$){\big};\node[anchor=west,font=\monolatin\tiny,text=whiteish!70] at ($(current page.north west)+(\x+.05,-\y+.47)$){\small};}
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(12.85,-17.15)$) rectangle ($(current page.north west)+(20.45,-21.0)$);
+\putnode[font=\monolatin\bfseries\large,text=cyan]{13.25cm}{17.55cm}{4cm}{// EDUCATION}
+\draw[purple,line width=.6pt] ($(current page.north west)+(13.4,-18.45)$)--++(0,-2.0);
+\shade[inner color=purple,outer color=purple!20] ($(current page.north west)+(13.4,-18.45)$) circle (.1cm);
+\shade[inner color=purple,outer color=purple!20] ($(current page.north west)+(13.4,-20.15)$) circle (.1cm);
+\putnode[font=\monolatin\scriptsize,text=whiteish]{14.1cm}{18.25cm}{5.4cm}{2016 -- 2018\\\textbf{M.S. COMPUTER SCIENCE}\\\textcolor{purple!85}{Stanford University}\\GPA: 3.8 / 4.0\\[8pt]2012 -- 2016\\\textbf{B.S. COMPUTER SCIENCE}\\\textcolor{purple!85}{University of California, Berkeley}\\GPA: 3.7 / 4.0}
+
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(0.55,-21.3)$) rectangle ($(current page.north west)+(12.6,-27.55)$);
+\putnode[font=\monolatin\bfseries\large,text=cyan]{1.0cm}{21.72cm}{4cm}{// PROJECTS}
+\draw[line,rounded corners=6pt,fill=bg!55] ($(current page.north west)+(1.0,-22.55)$) rectangle ++(1.4,-1.4);\node[text=purple,font=\Large] at ($(current page.north west)+(1.7,-23.25)$){\faIcon{cube}};
+\putnode[font=\monolatin\scriptsize,text=whiteish]{2.8cm}{22.55cm}{6.6cm}{\textbf{PROJECT ONE} \textcolor{cyan}{FEATURED}\\Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\Sed do eiusmod tempor incididunt ut labore et dolore.\\[2pt]\textcolor{cyan}{\fbox{NEXT.JS} \fbox{TYPESCRIPT} \fbox{TAILWIND} \fbox{POSTGRESQL}}}
+\draw[line,rounded corners=6pt,fill=bg!55] ($(current page.north west)+(1.0,-24.65)$) rectangle ++(1.4,-1.4);\node[text=cyan,font=\Large] at ($(current page.north west)+(1.7,-25.35)$){\faIcon{bolt}};
+\putnode[font=\monolatin\scriptsize,text=whiteish]{2.8cm}{24.65cm}{6.6cm}{\textbf{PROJECT TWO}\\Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\Sed do eiusmod tempor incididunt ut labore et dolore.\\[2pt]\textcolor{cyan}{\fbox{REACT} \fbox{NODE.JS} \fbox{MONGODB} \fbox{EXPRESS}}}
+\draw[line,densely dotted] ($(current page.north west)+(1.0,-26.65)$) rectangle ($(current page.north west)+(12.05,-27.25)$);
+\node[font=\monolatin\scriptsize\bfseries,text=cyan] at ($(current page.north west)+(6.5,-27.02)$){› VIEW MORE PROJECTS ON GITHUB.COM/YOURUSERNAME};
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.north west)+(12.85,-21.3)$) rectangle ($(current page.north west)+(20.45,-27.55)$);
+\putnode[font=\monolatin\bfseries\large,text=cyan]{13.25cm}{21.72cm}{4cm}{// CONTACT}
+\putnode[font=\monolatin\scriptsize,text=whiteish]{13.35cm}{22.6cm}{5.8cm}{\textcolor{cyan}{\faIcon{envelope}}\quad youremail@example.com\\[7pt]\textcolor{cyan}{\faIcon{phone}}\quad +1 (555) 123-4567\\[7pt]\textcolor{cyan}{\faIcon{map-marker-alt}}\quad San Francisco, CA\\[7pt]\textcolor{cyan}{\faIcon{globe}}\quad yourwebsite.dev\\[7pt]\textcolor{cyan}{\faIcon{linkedin}}\quad linkedin.com/in/yourusername\\[7pt]\textcolor{cyan}{\faIcon{github}}\quad github.com/yourusername}
+\draw[cyan!45,line width=.5pt] ($(current page.north west)+(18.2,-24.1)$) circle (.7cm);\draw[purple!65,line width=.5pt] ($(current page.north west)+(18.2,-24.1)$) circle (1.0cm);\fill[cyan] ($(current page.north west)+(18.2,-24.1)$) circle (.08cm);
+
+\draw[line,rounded corners=8pt,fill=panel] ($(current page.south west)+(0.55,0.65)$) rectangle ($(current page.south east)+(-0.55,2.0)$);
+\node[font=\monolatin\Large\bfseries,text=purple] at ($(current page.south west)+(1.35,1.32)$) {“};
+\node[font=\monolatin\small\bfseries,text=whiteish] at ($(current page.south west)+(10.3,1.33)$) {CODE IS LIKE HUMOR. WHEN YOU HAVE TO EXPLAIN IT, IT'S BAD.};
+\node[font=\monolatin\scriptsize\bfseries,text=cyan] at ($(current page.south west)+(9.7,.93)$) {-- CORY HOUSE};
+\node[font=\monolatin\Large\bfseries,text=purple] at ($(current page.south east)+(-1.35,1.32)$) {”};
+
+\end{tikzpicture}
+\end{document}

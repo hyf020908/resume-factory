@@ -1,0 +1,69 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{side}{HTML}{526A80}
+\definecolor{side2}{HTML}{41576D}
+\definecolor{maintext}{HTML}{1E2936}
+\definecolor{lightline}{HTML}{D3D8DE}
+\fill[white] (current page.south west) rectangle (current page.north east);
+\fill[side] (current page.north west) rectangle ($(current page.south west)+(6.95,0)$);
+\shade[top color=side!92,bottom color=side2] (current page.north west) rectangle ($(current page.south west)+(6.95,0)$);
+\draw[white,line width=1.2pt] ($(current page.north west)+(3.48,-1.2)$) circle (1.55cm);
+\draw[fill=white!15,draw=white,line width=.7pt] ($(current page.north west)+(3.48,-1.2)$) circle (1.45cm);
+\node[text=white!80,font=\scriptsize] at ($(current page.north west)+(3.48,-1.2)$) {PHOTO};
+\putnode[font=\cjkserif\bfseries\fontsize{29}{34}\selectfont,text=white,align=center]{1.55cm}{4.48cm}{3.85cm}{张景行}
+\putnode[font=\sffamily\bfseries\large,text=white,align=center]{1.4cm}{5.45cm}{4.2cm}{产品经理 / 产品总监}
+\tinysep{.65cm}{7.2cm}{6.3cm}{white!55,line width=.5pt}
+
+\putnode[font=\cjkserif\bfseries\large,text=white]{.8cm}{8.05cm}{5cm}{\faIcon{user}　联系我}
+\putnode[font=\small,text=white!90]{.82cm}{9.0cm}{5.5cm}{\faIcon{phone}　138-0000-1234\\[8pt]\faIcon{envelope}　zhangjingxing@email.com\\[8pt]\faIcon{map-marker-alt}　上海市浦东新区\\[8pt]\faIcon{linkedin}　linkedin.com/in/zhangjingxing}
+\tinysep{.65cm}{12.6cm}{6.3cm}{white!42,line width=.5pt}
+\putnode[font=\cjkserif\bfseries\large,text=white]{.8cm}{13.25cm}{5cm}{\faIcon{briefcase}　专业技能}
+\foreach \name/\y/\len in {产品规划/14.35/3.0,需求分析/14.95/3.4,项目管理/15.55/3.1,数据分析/16.15/3.5,用户研究/16.75/2.5,Axure、Figma/17.35/3.3,SQL/17.95/2.7,沟通协作/18.55/3.3}{\node[anchor=west,font=\small,text=white] at ($(current page.north west)+(.82,-\y)$){\name};\draw[white!24,line width=3pt,line cap=round] ($(current page.north west)+(2.95,-\y)$)--++(3.3,0);\draw[white!92,line width=3pt,line cap=round] ($(current page.north west)+(2.95,-\y)$)--++(\len,0);}
+\tinysep{.65cm}{20.0cm}{6.3cm}{white!42,line width=.5pt}
+\putnode[font=\cjkserif\bfseries\large,text=white]{.8cm}{20.65cm}{5cm}{\faIcon{star}　核心素养}
+\putnode[font=\small,text=white]{.85cm}{21.55cm}{5.4cm}{\textbf{用户思维}\\以用户为中心，持续创造价值\\[6pt]\textbf{数据驱动}\\基于数据决策，驱动业务增长\\[6pt]\textbf{系统思维}\\全局视角，整合资源解决问题\\[6pt]\textbf{结果导向}\\目标明确，追求高效高质量交付}
+\tinysep{.65cm}{26.05cm}{6.3cm}{white!42,line width=.5pt}
+\putnode[font=\cjkserif\bfseries\large,text=white]{.8cm}{26.6cm}{5cm}{\faIcon{graduation-cap}　教育背景}
+\putnode[font=\small,text=white]{.85cm}{27.45cm}{5.5cm}{复旦大学 \hfill 2012.09 - 2016.06\\计算机科学与技术　本科\\GPA：3.7/4.0（专业前10\%）}
+
+% main right
+\putnode[font=\cjkserif\bfseries\Large,text=maintext]{7.9cm}{1.25cm}{5cm}{\textcolor{side}{\faIcon{user}}　个人简介}
+\putnode[font=\cjkserif\normalsize,text=maintext]{7.9cm}{2.25cm}{11.0cm}{拥有 8 年产品管理经验，专注于互联网产品从 0 到 1 及从 1 到 N 的全生命周期管理。\\擅长用户研究、需求分析与产品规划，具备出色的跨部门协作与项目推进能力，\\成功打造多款高用户满意度与商业价值的产品，驱动业务持续增长。}
+\tinysep{7.7cm}{4.6cm}{19.9cm}{lightline,line width=.6pt}
+\putnode[font=\cjkserif\bfseries\Large,text=maintext]{7.9cm}{5.35cm}{5cm}{\textcolor{side}{\faIcon{briefcase}}　工作经历}
+\draw[side!55,line width=.6pt] ($(current page.north west)+(8.0,-6.75)$)--($(current page.north west)+(8.0,-17.3)$);
+\foreach \y in {6.75,11.05,15.40}{\draw[fill=white,draw=side,line width=.8pt] ($(current page.north west)+(8.0,-\y)$) circle (.09cm);}
+\putnode[font=\cjkserif\normalsize,text=maintext]{8.55cm}{6.45cm}{10.7cm}{\textbf{2021.04 - 至今} \hfill \textbf{字节跳动} \hfill 高级产品经理 / 产品负责人\\[-2pt]• 负责公司核心产品的用户增长与商业化模块，制定产品策略与路线图；\\• 通过用户研究与数据分析，挖掘用户需求，优化产品体验与功能策略；\\• 带领跨职能团队（研发、设计、运营等）高效协作，推动项目按时高质量交付；\\• 优化关键业务指标，年增长率提升 35\%，用户满意度提升 25\%。\\[16pt]\textbf{2018.06 - 2021.03} \hfill \textbf{腾讯科技} \hfill 产品经理\\[-2pt]• 负责社交产品的功能迭代与体验优化，提升用户活跃度与留存率；\\• 基于数据分析与市场研究，输出产品需求文档与竞品分析报告；\\• 带领开发、测试、运营等团队，确保产品功能高质量落地；\\• 主导 3 个重要功能模块上线，DAU 提升 20\%，用户留存提升 15\%。\\[16pt]\textbf{2016.07 - 2018.05} \hfill \textbf{网易游戏} \hfill 产品助理\\[-2pt]• 协助产品经理进行需求收集、竞品分析与功能设计；\\• 撰写需求文档，跟进开发与测试，参与产品上线后的数据分析；\\• 参与 2 款手游产品的版本迭代，优化用户体验与核心玩法。}
+\tinysep{7.7cm}{18.1cm}{19.9cm}{lightline,line width=.6pt}
+\putnode[font=\cjkserif\bfseries\Large,text=maintext]{7.9cm}{18.85cm}{5cm}{\textcolor{side}{\faIcon{folder-open}}　项目经验}
+\putnode[font=\cjkserif\normalsize,text=maintext]{7.9cm}{19.8cm}{11.2cm}{\textbf{智能推荐系统升级项目} \hfill 2022.01 - 2022.08\\项目负责人\\• 主导智能推荐算法优化，提升推荐准确率与用户点击率；\\• 通过用户行为数据分析与 A/B 测试，优化推荐策略与模型；\\• 项目上线后，推荐点击率提升 28\%，用户活跃度提升 18\%。\\[12pt]\textbf{会员体系优化项目} \hfill 2021.06 - 2021.10\\项目负责人\\• 负责会员体系的整体规划与优化，提升用户付费转化率与留存率；\\• 设计多层级会员权益与成长体系，结合运营活动提升用户粘性；\\• 项目上线后，付费转化率提升 22\%，会员留存率提升 30\%。}
+\tinysep{7.7cm}{25.2cm}{19.9cm}{lightline,line width=.6pt}
+\putnode[font=\cjkserif\bfseries\Large,text=maintext]{7.9cm}{25.8cm}{5cm}{\textcolor{side}{\faIcon{trophy}}　荣誉与证书}
+\foreach \x/\icon/\t in {8.7/medal/{年度优秀员工\\2022，字节跳动},11.9/certificate/{产品创新奖\\2021，腾讯科技},15.1/trophy/{全国大学生\\数学竞赛一等奖},18.3/file-alt/{PMP 项目管理\\专业人士认证}}{\node[text=side,font=\Large] at ($(current page.north west)+(\x,-27.2)$){\faIcon{\icon}};\node[font=\cjkserif\small,text=maintext,align=center] at ($(current page.north west)+(\x,-28.15)$){\t};\draw[lightline,line width=.5pt] ($(current page.north west)+(\x+1.45,-26.7)$)--++(0,-1.8);}
+
+\end{tikzpicture}
+\end{document}

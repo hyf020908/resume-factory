@@ -1,0 +1,77 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{sky}{HTML}{46C8FF}
+\definecolor{violet}{HTML}{965BFF}
+\definecolor{pink}{HTML}{FF8EDB}
+\definecolor{glass}{HTML}{FFFFFF}
+\definecolor{whiteish}{HTML}{F5FAFF}
+\fill[sky!75] (current page.south west) rectangle (current page.north east);
+\shade[left color=sky,right color=pink,opacity=.65] (current page.south west) rectangle (current page.north east);
+\shade[inner color=violet,outer color=sky,opacity=.65] ($(current page.north west)+(7,-5)$) circle (8cm);
+\shade[inner color=pink,outer color=sky,opacity=.45] ($(current page.south east)+(-4,4)$) circle (7cm);
+\foreach \i in {1,...,16}{\draw[white,opacity=.22,line width=1.4pt] ($(current page.south west)+(rand*21,rand*29.7)$)..controls +(rand*4,rand*4) and +(rand*3,rand*3)..($(current page.south west)+(rand*21,rand*29.7)$);}
+\newcommand{\glasscard}[4]{\draw[rounded corners=16pt,fill=white,fill opacity=.16,draw=white,draw opacity=.55,line width=.7pt,blur shadow={shadow blur steps=8,shadow opacity=.15}] ($(current page.north west)+(#1,-#2)$) rectangle ++(#3,-#4);}
+\glasscard{.7cm}{.9cm}{7.5cm}{10.0cm}
+\glasscard{.7cm}{11.25cm}{7.5cm}{4.0cm}
+\glasscard{.7cm}{15.65cm}{7.5cm}{4.3cm}
+\glasscard{.7cm}{20.35cm}{7.5cm}{2.05cm}
+\glasscard{.7cm}{22.75cm}{7.5cm}{2.75cm}
+\glasscard{8.6cm}{1.15cm}{11.5cm}{10.9cm}
+\glasscard{8.6cm}{13.45cm}{11.5cm}{6.7cm}
+\glasscard{8.6cm}{21.25cm}{11.5cm}{3.55cm}
+\glasscard{2.65cm}{26.1cm}{15.2cm}{1.55cm}
+
+\node[rounded corners=8pt,draw=white,draw opacity=.45,fill=white,fill opacity=.1,font=\monolatin\scriptsize\bfseries,text=whiteish] at ($(current page.north west)+(2.3,-1.45)$) {\faIcon{globe}　WEB3 BUILDER};
+\draw[white,line width=1.4pt,opacity=.65] ($(current page.north west)+(4.1,-3.25)$) circle (1.55cm);
+\draw[fill=white,opacity=.15,draw=white] ($(current page.north west)+(4.1,-3.25)$) circle (1.35cm);
+\node[font=\scriptsize,text=white] at ($(current page.north west)+(4.1,-3.25)$){PHOTO};
+\shade[inner color=white,outer color=pink,opacity=.65] ($(current page.north west)+(6.25,-4.65)$) circle (.37cm);
+\putnode[font=\sffamily\bfseries\fontsize{29}{30}\selectfont\addfontfeatures{LetterSpace=6},text=whiteish]{1.2cm}{7.55cm}{6.5cm}{ALEX\\KORVYN}
+\putnode[font=\sffamily\bfseries\Large\addfontfeatures{LetterSpace=3},text=whiteish]{1.2cm}{9.15cm}{6.6cm}{PRODUCT DESIGNER\\\& WEB3 ENTHUSIAST}
+\node[rounded corners=8pt,draw=white,draw opacity=.42,fill=white,fill opacity=.12,font=\monolatin\scriptsize\bfseries,text=whiteish] at ($(current page.north west)+(3.0,-10.35)$) {\faIcon{map-marker-alt}　METAVERSE CITIZEN};
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=2},text=whiteish]{1.2cm}{12.0cm}{4cm}{ABOUT ME}
+\putnode[font=\sffamily\small,text=whiteish]{1.2cm}{12.9cm}{6.3cm}{I design immersive digital experiences\\at the intersection of design, technology\\and decentralization. Passionate about\\building meaningful products for the\\future of the internet.}
+\node[font=\scriptlatin\large,text=white] at ($(current page.north west)+(6.5,-14.65)$){Dumbledore};
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=2},text=whiteish]{1.2cm}{16.4cm}{4cm}{SKILLS}
+\foreach \name/\pct/\y/\len in {PRODUCT DESIGN/95\%/17.55/3.55,UI UX DESIGN/90\%/18.25/3.35,WEB3 DEFI/85\%/18.95/3.15,MOTION DESIGN/80\%/19.65/2.95,3D DESIGN/75\%/20.35/2.75,FRONTEND (BASIC)/70\%/21.05/2.55}{\node[anchor=west,font=\sffamily\scriptsize\bfseries,text=whiteish] at ($(current page.north west)+(1.2,-\y)$){\name};\draw[white!35,line width=3pt,line cap=round] ($(current page.north west)+(3.75,-\y)$)--++(3.7,0);\draw[cyan,line width=3pt,line cap=round] ($(current page.north west)+(3.75,-\y)$)--++(\len,0);\node[anchor=west,font=\sffamily\scriptsize\bfseries,text=whiteish] at ($(current page.north west)+(7.55,-\y)$){\pct};}
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=2},text=whiteish]{1.2cm}{21.05cm}{4cm}{TOOLS}
+\foreach \x/\t in {1.45/Fg,2.55/Ps,3.65/Ae,4.75/Bl,5.85/C}{\draw[rounded corners=7pt,fill=white,fill opacity=.14,draw=white,draw opacity=.45] ($(current page.north west)+(\x,-22.0)$) rectangle ++(.9,-.9);\node[font=\sffamily\bfseries\large,text=whiteish] at ($(current page.north west)+(\x+.45,-22.45)$){\t};}
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=2},text=whiteish]{1.2cm}{23.35cm}{4cm}{INTERESTS}
+\foreach \x/\icon/\t in {1.55/vr-cardboard/VR / AR,2.7/cube/DAO,3.85/gem/NFT ART,5.0/music/MUSIC,6.15/globe/TRAVEL}{\node[rounded corners=7pt,fill=white,fill opacity=.14,draw=white,draw opacity=.35,minimum size=.82cm,text=whiteish] at ($(current page.north west)+(\x,-24.45)$){\faIcon{\icon}};\node[font=\sffamily\tiny\bfseries,text=whiteish] at ($(current page.north west)+(\x,-25.22)$){\t};}
+
+\putnode[font=\sffamily\bfseries\fontsize{18}{20}\selectfont\addfontfeatures{LetterSpace=3},text=whiteish]{9.0cm}{1.8cm}{6cm}{EXPERIENCE}
+\foreach \y/\years/\title/\loc/\desc/\tags in {3.5/{2023\\--\\PRESENT}/{PRODUCT DESIGNER: METALAND}/REMOTE/{Leading product design for a Web3-native social gaming platform.\\Defined the design system and crafted immersive UI/UX for\\metaverse experiences.}/{WEB3\quad UI / UX\quad DESIGN SYSTEM\quad RESEARCH},6.9/{2021\\--\\2023}/{UI UX DESIGNER: NOVA WALLET}/REMOTE/{Designed user-centric interfaces for a multi-chain crypto wallet\\app. Improved user onboarding flow and overall experience.}/{DEFI\quad MOBILE DESIGN\quad UI ANIMATION},10.25/{2019\\--\\2021}/{VISUAL DESIGNER: PIXELVERSE STUDIO}/BERLIN/{Worked on branding and digital experiences for clients in\\blockchain, NFT, and AI startups.}/{BRANDING\quad VISUAL DESIGN\quad NFT}}{\draw[rounded corners=10pt,fill=white,fill opacity=.15,draw=white,draw opacity=.35] ($(current page.north west)+(8.95,-\y)$) rectangle ++(2.1,-2.2);\node[font=\sffamily\bfseries\large,text=whiteish,align=center] at ($(current page.north west)+(10.0,-\y-1.1)$){\years};\node[anchor=west,font=\sffamily\bfseries\small\addfontfeatures{LetterSpace=1},text=whiteish] at ($(current page.north west)+(11.55,-\y-.35)$){\title};\node[rounded corners=7pt,draw=white,draw opacity=.4,anchor=east,font=\sffamily\tiny\bfseries,text=whiteish] at ($(current page.north west)+(19.4,-\y-.35)$){\hspace{.15cm}\loc\hspace{.15cm}};\node[anchor=north west,font=\sffamily\scriptsize,text=whiteish,text width=7.1cm,align=left] at ($(current page.north west)+(11.55,-\y-.85)$){\desc};\node[anchor=north west,font=\sffamily\tiny\bfseries,text=whiteish] at ($(current page.north west)+(11.55,-\y-1.95)$){\tags};}
+\putnode[font=\sffamily\bfseries\fontsize{18}{20}\selectfont\addfontfeatures{LetterSpace=3},text=whiteish]{9.0cm}{13.92cm}{7cm}{FEATURED PROJECTS}
+\node[rounded corners=9pt,draw=white,draw opacity=.5,font=\sffamily\tiny\bfseries,text=whiteish] at ($(current page.north west)+(18.55,-14.05)$) {VIEW ALL  >};
+\foreach \x/\title/\sub/\desc in {9.0/METALAND/WEB3 SOCIAL PLATFORM/{A decentralized social\\metaverse where users own,\\create and monetize\\experiences.},12.65/NOVA WALLET/MULTI-CHAIN WALLET/{A secure and beautiful\\multi-chain wallet for DeFi,\\NFTs and Web3 explorers.},16.3/ECHOES NFT/GENERATIVE ART COLLECTION/{An algorithmic NFT collection\\exploring the relationship\\between code, art and\\emotions.}}{\draw[rounded corners=12pt,fill=white,fill opacity=.17,draw=white,draw opacity=.45] ($(current page.north west)+(\x,-15.1)$) rectangle ++(3.35,-4.6);\draw[rounded corners=8pt,fill=black,fill opacity=.25,draw=white,draw opacity=.25] ($(current page.north west)+(\x+.25,-15.45)$) rectangle ++(2.85,-1.25);\node[font=\sffamily\bfseries\large,text=whiteish,anchor=west] at ($(current page.north west)+(\x+.25,-17.05)$){\title};\node[font=\sffamily\tiny\bfseries,text=whiteish,anchor=west] at ($(current page.north west)+(\x+.25,-17.6)$){\sub};\node[font=\sffamily\scriptsize,text=whiteish,anchor=north west,text width=2.8cm,align=left] at ($(current page.north west)+(\x+.25,-18.0)$){\desc};\node[font=\Large,text=white] at ($(current page.north west)+(\x+2.9,-19.25)$){↗};}
+\putnode[font=\sffamily\bfseries\fontsize{18}{20}\selectfont\addfontfeatures{LetterSpace=3},text=whiteish]{9.0cm}{22.0cm}{6cm}{ACHIEVEMENTS}
+\foreach \y/\icon/\t in {22.75/trophy/{WINNER: ETHGLOBAL PARIS 2023\\Built a Web3 social dApp integrating AI \& NFTs.},23.75/award/{FEATURED DESIGNER ON AWWWARDS\\Honored for design excellence in digital experiences.},24.75/bolt/{TOP 50 DESIGNER ON DRIBBBLE\\Recognized for impactful UI/UX and Web3 design work.}}{\draw[rounded corners=8pt,fill=white,fill opacity=.13,draw=white,draw opacity=.25] ($(current page.north west)+(9.25,-\y)$) rectangle ++(6.6,-.78);\node[text=whiteish] at ($(current page.north west)+(9.75,-\y-.39)$){\faIcon{\icon}};\node[anchor=west,font=\sffamily\tiny\bfseries,text=whiteish] at ($(current page.north west)+(10.45,-\y-.28)$){\t};}
+\draw[cyan!30,line width=.5pt] ($(current page.north west)+(17.55,-23.2)$) circle (1.4cm);\draw[white!40,line width=.7pt] ($(current page.north west)+(17.55,-23.2)$) ellipse (2.1cm and .55cm);
+\putnode[font=\sffamily\scriptsize\bfseries,text=whiteish]{3.05cm}{26.62cm}{14cm}{\faIcon{envelope}　hello@alexkorvyn.eth \hfill \faIcon{globe}　alexkorvyn.com \hfill \faIcon{wallet}　0x7a...b3c8 \hfill \faIcon{copy}}
+
+\end{tikzpicture}
+\end{document}

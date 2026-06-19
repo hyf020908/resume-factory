@@ -1,0 +1,88 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{paper}{HTML}{F4EAD8}
+\definecolor{ink}{HTML}{2D2A24}
+\definecolor{brown}{HTML}{B28E61}
+\definecolor{redseal}{HTML}{B8382E}
+\fill[paper] (current page.south west) rectangle (current page.north east);
+\foreach \i in {1,...,180}{\fill[black,opacity=0.025] ($(current page.south west)+(rand*21,rand*29.7)$) circle (.02cm);}
+\fill[brown!18,opacity=.25] ($(current page.south west)+(0,0)$) .. controls +(2,2) and +(-2,1) .. +(7,0) -- cycle;
+\draw[brown!45,line width=.6pt] ($(current page.north west)+(7.2,-0.15)$)--($(current page.south west)+(7.2,0.15)$);
+\draw[brown!35,line width=.4pt] ($(current page.north west)+(7.35,-0.15)$)--($(current page.south west)+(7.35,0.15)$);
+\draw[brown!50,line width=.5pt] ($(current page.north west)+(0.45,-0.45)$) rectangle ($(current page.south east)+(-0.45,0.45)$);
+
+% bamboo and landscape hints
+\draw[ink!55,line width=1.2pt] ($(current page.north east)+(-2.2,-0.4)$)--++(.2,-4.6);
+\draw[ink!55,line width=1.0pt] ($(current page.north east)+(-1.25,-0.2)$)--++(-.25,-5.2);
+\foreach \x/\y in {-2.0/-1.0,-1.5/-2.2,-2.2/-3.6,-.9/-1.5,-.7/-3.0}{\fill[ink!45,rotate=25] ($(current page.north east)+(\x,\y)$) ellipse (.45cm and .08cm);}
+\foreach \x/\y in {.7/-.9,1.5/-1.5,2.2/-.6,1.1/-2.7}{\draw[ink!45,line width=.8pt] ($(current page.north west)+(\x,\y)$)--++(-.7,-.15);\fill[ink!45,rotate=20] ($(current page.north west)+(\x,\y)$) ellipse (.4cm and .07cm);}
+\draw[brown!55,line width=1pt] ($(current page.south west)+(1.1,3.0)$)..controls +(1.6,1.2) and +(-2,1)..+(6.0,.2);
+\draw[ink!35,line width=.6pt] ($(current page.south west)+(1.5,2.4)$)..controls +(1.4,.7) and +(-.8,.5)..+(4.0,.1);
+\draw[ink!45] ($(current page.south west)+(4.4,2.0)$)--++(.25,.8)--++(.2,-.75);
+
+% left name panel
+\putnode[font=\cjkserif\fontsize{42}{48}\selectfont, text=ink, align=center]{1.9cm}{2.55cm}{3.1cm}{林\\清\\晏}
+\draw[ink!55,line width=.45pt] ($(current page.north west)+(1.15,-3.3)$)--++(0,-3.8);
+\draw[ink!55,line width=.45pt] ($(current page.north west)+(5.45,-3.3)$)--++(0,-6.7);
+\node[rounded corners=5pt,draw=redseal,fill=redseal!10,text=redseal,font=\cjkserif\large,inner sep=3pt] at ($(current page.north west)+(5.35,-3.65)$) {简\\历};
+\putnode[font=\cjkserif\large, text=ink!75, align=center]{1.0cm}{6.35cm}{.6cm}{怀\\瑾\\握\\瑜\\·\\行\\稳\\致\\远}
+
+% left info frame
+\draw[brown!60,line width=1pt,rounded corners=8pt] ($(current page.north west)+(1.05,-11.15)$) rectangle ($(current page.north west)+(6.35,-24.0)$);
+\draw[brown!35,line width=.8pt] ($(current page.north west)+(1.6,-12.35)$)--++(3.8,0);
+\node[font=\cjkserif\bfseries\large,anchor=west,text=ink] at ($(current page.north west)+(1.85,-14.45)$) {个人信息};
+\fill[redseal] ($(current page.north west)+(1.65,-14.45)$) rectangle ++(.10,.35);
+\putnode[font=\small, text=ink!85]{1.45cm}{15.35cm}{4.8cm}{\faIcon{calendar}　出生年月：1998.06\\[6pt]\faIcon{map-marker-alt}　籍　　贯：江苏 · 苏州\\[6pt]\faIcon{phone}　电　　话：138-8888-8888\\[6pt]\faIcon{envelope}　邮　　箱：linqingyan@163.com\\[6pt]\faIcon{globe}　地　　址：杭州市西湖区文三路}
+\node[font=\cjkserif\bfseries\large,anchor=west,text=ink] at ($(current page.north west)+(1.85,-19.75)$) {教育背景};
+\fill[redseal] ($(current page.north west)+(1.65,-19.75)$) rectangle ++(.10,.35);
+\draw[brown!45,line width=.6pt] ($(current page.north west)+(1.45,-20.35)$)--($(current page.north west)+(5.7,-20.35)$);
+\putnode[font=\small, text=ink!85]{1.45cm}{21.05cm}{4.8cm}{2016.09 - 2020.06\\[5pt]浙江大学 · 中国语言文学专业\\[5pt]本科 / 文学学士\\[5pt]主修课程：\\古代汉语、现代汉语、文学概论\\中国古代文学、中国现当代文学\\写作、比较文学、文艺美学}
+
+% section label helper boxes
+\newcommand{\vlabel}[3]{\draw[brown!50,rounded corners=3pt,line width=.5pt] ($(current page.north west)+(#1,-#2)$) rectangle ++(.8,-3.0);\node[font=\cjkserif\large, text=ink, align=center] at ($(current page.north west)+(#1+.4,-#2-1.5)$) {#3};\fill[redseal] ($(current page.north west)+(#1+.33,-#2-2.55)$) rectangle ++(.14,.14);}
+\vlabel{7.95cm}{2.0cm}{个\\人\\简\\介}
+\vlabel{7.95cm}{7.25cm}{工\\作\\经\\历}
+\vlabel{7.95cm}{15.65cm}{项\\目\\经\\历}
+\vlabel{7.95cm}{22.9cm}{技\\能\\证\\书}
+\vlabel{7.95cm}{26.1cm}{自\\我\\评\\价}
+
+\putnode[font=\cjkserif\normalsize, text=ink!88]{9.35cm}{3.0cm}{9.5cm}{文艺而沉静，思维敏捷，热爱传统文化与文字创作。\\[6pt]具备良好的文学功底与审美素养，擅长内容策划与表达，\\[6pt]在多次实践中锻炼出较强的沟通能力与团队协作精神。\\[6pt]愿以所学回馈社会，在热爱的领域中持续精进，成为\\[6pt]有温度、有深度的创作者。}
+\tinysep{9.35cm}{6.95cm}{18.9cm}{brown!35,densely dotted,line width=.5pt}
+
+\putnode[font=\cjkserif\normalsize, text=ink]{9.35cm}{8.55cm}{9.4cm}{2021.07 - 2023.06\\\textbf{杭州墨语文化传媒有限公司 · 内容编辑}\\[-2pt]• 负责平台原创内容的策划与撰写，涵盖文化、情感、生活等领域；\\• 独立完成多篇10w+阅读量文章，提升账号影响力与用户粘性；\\• 与设计、运营团队协作，优化内容呈现形式与传播效果。\\[12pt]2023.07 - 至今\\\textbf{杭州云栖文化创意有限公司 · 文案策划}\\[-2pt]• 参与品牌文化项目的策划与文案创作，输出品牌故事与方案；\\• 负责活动宣传文案、品牌手册等内容撰写，提升品牌调性；\\• 定期进行市场调研，挖掘用户需求，优化内容策略。}
+\tinysep{9.35cm}{14.95cm}{18.9cm}{brown!35,densely dotted,line width=.5pt}
+
+\putnode[font=\cjkserif\normalsize, text=ink]{9.35cm}{16.25cm}{9.4cm}{2022.03 - 2022.06 \hfill \textbf{核心文案}\\\textbf{“宋韵雅集”传统文化推广项目}\\[-2pt]• 负责项目文案策划与主题内容撰写，传递宋代美学与文化内涵；\\• 策划系列推文与线下活动文案，提升项目传播力与参与度；\\• 项目总曝光量超过1000万，获得合作方高度认可。\\[12pt]2023.09 - 2023.12 \hfill \textbf{文案策划}\\\textbf{“二十四节气”品牌文创项目}\\[-2pt]• 撰写二十四节气主题文案与产品故事，结合传统文化与现代生活；\\• 与设计团队协作，打造系列文创产品文案与包装创意；\\• 项目产品上线后广受好评，销售额突破50万元。}
+\tinysep{9.35cm}{22.55cm}{18.9cm}{brown!35,densely dotted,line width=.5pt}
+
+\foreach \x/\icon/\title/\text in {10.2/\faIcon{pen}/专业技能/{文案写作 / 内容策划\\新媒体运营 / 编辑排版},12.9/\faIcon{language}/语言能力/{大学英语六级\\普通话二级甲等},15.6/\faIcon{trophy}/荣誉奖项/{校级优秀毕业生\\国家奖学金},18.2/\faIcon{book-open}/其他证书/{教师资格证（高中语文）\\计算机二级（MS Office）}}{\node[circle,draw=brown!70,minimum size=.82cm,text=brown!80,font=\large] at ($(current page.north west)+(\x,-24.0)$) {\icon};\node[font=\cjkserif\bfseries\small,text=ink] at ($(current page.north west)+(\x,-24.75)$) {\title};\node[font=\cjkserif\scriptsize,text=ink!80,align=center] at ($(current page.north west)+(\x,-25.4)$) {\text};}
+\tinysep{9.35cm}{25.95cm}{18.9cm}{brown!35,densely dotted,line width=.5pt}
+\putnode[font=\cjkserif\normalsize, text=ink!88]{9.35cm}{27.15cm}{9.5cm}{热爱文字，善于表达，具备良好的审美与创新能力。\\做事认真细致，追求卓越，能够在压力下高效完成任务。\\期待在更广阔的平台上发挥所长，创造有价值的内容，与团队共同成长。}
+\node[draw=redseal,text=redseal,font=\cjkserif\scriptsize,inner sep=2pt] at ($(current page.north west)+(10.45,-28.75)$) {墨语\\印记};
+
+\end{tikzpicture}
+\end{document}

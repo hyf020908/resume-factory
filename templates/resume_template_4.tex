@@ -1,0 +1,96 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{cream}{HTML}{FFF7EB}
+\definecolor{pink}{HTML}{FF9AAE}
+\definecolor{green}{HTML}{CDE5BC}
+\definecolor{browntext}{HTML}{7B5D48}
+\fill[cream] (current page.south west) rectangle (current page.north east);
+\shade[left color=pink!25,right color=green!25,opacity=.55] (current page.south west) rectangle (current page.north east);
+\newcommand{\softcard}[4]{\draw[rounded corners=18pt,fill=white,draw=white,blur shadow={shadow blur steps=10,shadow opacity=.18,shadow xshift=.08cm,shadow yshift=-.08cm}] ($(current page.north west)+(#1,-#2)$) rectangle ++(#3,-#4);\draw[rounded corners=18pt,white,opacity=.65,line width=1pt] ($(current page.north west)+(#1+.05,-#2-.05)$) rectangle ++(#3-.1,-#4+.1);}
+\softcard{.8cm}{.8cm}{6.7cm}{10.0cm}
+\softcard{.8cm}{11.25cm}{6.7cm}{6.7cm}
+\softcard{.8cm}{18.45cm}{6.7cm}{5.3cm}
+\softcard{.8cm}{24.2cm}{6.7cm}{4.65cm}
+\softcard{8.0cm}{.8cm}{12.2cm}{6.9cm}
+\softcard{8.0cm}{8.15cm}{12.2cm}{12.7cm}
+\softcard{8.0cm}{21.25cm}{12.2cm}{3.5cm}
+\softcard{8.0cm}{25.15cm}{5.75cm}{3.7cm}
+\softcard{14.45cm}{25.15cm}{5.75cm}{3.7cm}
+
+% profile
+\draw[fill=white,draw=white,blur shadow={shadow blur steps=6,shadow opacity=.16}] ($(current page.north west)+(1.72,-1.45)$) circle (1.75cm);
+\draw[fill=cream!80,draw=white,line width=3pt] ($(current page.north west)+(1.72,-1.45)$) circle (1.45cm);
+\node[font=\sffamily\scriptsize,text=browntext!70] at ($(current page.north west)+(1.72,-1.45)$) {PHOTO};
+\node[circle,fill=pink!40,draw=white,line width=1pt,minimum size=1.0cm,blur shadow={shadow blur steps=5,shadow opacity=.2}] at ($(current page.north west)+(5.9,-4.15)$) {\textcolor{white}{\faIcon{heart}}};
+\putnode[font=\cjkserif\bfseries\fontsize{28}{32}\selectfont,text=browntext,align=center]{1.5cm}{6.1cm}{5.2cm}{小鱼酱}
+\putnode[font=\sffamily\bfseries\large,text=pink,align=center]{1.55cm}{7.1cm}{5.1cm}{UI/UX 设计师}
+\draw[rounded corners=12pt,fill=green!45,draw=white,blur shadow={shadow blur steps=5,shadow opacity=.18}] ($(current page.north west)+(1.48,-8.05)$) rectangle ++(4.9,-.7);
+\node[font=\cjkserif\small,text=browntext] at ($(current page.north west)+(3.95,-8.42)$) {用设计创造美好体验};
+\node[text=white] at ($(current page.north west)+(1.88,-8.43)$) {✧};\node[text=white] at ($(current page.north west)+(6.04,-8.43)$) {★};
+
+\fill[pink] ($(current page.north west)+(1.55,-11.85)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{2.0cm}{11.6cm}{4cm}{联系我}
+\putnode[font=\small,text=browntext]{1.55cm}{12.65cm}{5.2cm}{\textcolor{pink!70}{\faIcon{phone}}\quad 138-8888-8888\\[8pt]\textcolor{pink!70}{\faIcon{envelope}}\quad xiaoyujian@163.com\\[8pt]\textcolor{pink!70}{\faIcon{map-marker-alt}}\quad 上海市 · 浦东新区\\[8pt]\textcolor{pink!70}{\faIcon{globe}}\quad www.xiaoyujian.com}
+\tinysep{1.35cm}{17.55cm}{6.9cm}{browntext!15,line width=.6pt}
+\fill[pink] ($(current page.north west)+(1.55,-19.05)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{2.0cm}{18.8cm}{4cm}{专业技能}
+\foreach \name/\pct/\y/\color/\len in {UI 设计/95\%/20.35/pink/3.7,交互设计/90\%/21.25/green/3.45,视觉设计/85\%/22.15/pink/3.2,原型设计/85\%/23.05/green/3.2,AE 动效设计/75\%/23.95/pink/2.8,插画设计/70\%/24.85/green/2.6}{\node[anchor=west,font=\cjkserif\small,text=browntext] at ($(current page.north west)+(1.45,-\y)$){\name};\draw[browntext!12,line width=5pt,line cap=round] ($(current page.north west)+(1.45,-\y-.38)$)--++(4.4,0);\draw[\color!80,line width=5pt,line cap=round] ($(current page.north west)+(1.45,-\y-.38)$)--++(\len,0);\node[anchor=west,font=\small,text=browntext] at ($(current page.north west)+(6.15,-\y-.36)$){\pct};}
+\tinysep{1.35cm}{24.05cm}{6.9cm}{browntext!15,line width=.6pt}
+\fill[pink] ($(current page.north west)+(1.55,-25.05)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{2.0cm}{24.8cm}{4cm}{兴趣爱好}
+\foreach \x/\icon/\label in {1.8/camera/摄影,2.95/music/音乐,4.1/coffee/咖啡,5.25/leaf/旅行}{\node[circle,fill=white,draw=white,minimum size=.75cm,blur shadow={shadow blur steps=5,shadow opacity=.12},text=pink!70] at ($(current page.north west)+(\x,-27.0)$){\faIcon{\icon}};\node[font=\cjkserif\small,text=browntext] at ($(current page.north west)+(\x,-27.85)$){\label};}
+
+% main
+\fill[pink] ($(current page.north west)+(8.9,-1.95)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{9.35cm}{1.75cm}{4cm}{关于我}
+\node[circle,fill=green!35,draw=white,minimum size=1.05cm,blur shadow={shadow blur steps=6,shadow opacity=.18}] at ($(current page.north east)+(-1.7,-1.85)$) {\textcolor{white}{\faIcon{heart}}};
+\putnode[font=\cjkserif\small,text=browntext]{8.9cm}{3.0cm}{9.6cm}{热爱设计，专注于用户体验和界面设计领域，拥有 4 年设计经验。\\我喜欢从用户的角度思考问题，通过设计解决实际问题，\\创造出有价值、有温度的产品体验。}
+\foreach \x/\icon/\label in {9.85/smile/乐观开朗,12.55/heart/热爱设计,15.25/leaf/细心负责,17.95/star/持续学习}{\draw[rounded corners=10pt,fill=white,draw=white,blur shadow={shadow blur steps=6,shadow opacity=.15}] ($(current page.north west)+(\x-0.75,-4.75)$) rectangle ++(1.5,-1.75);\node[text=pink!65,font=\large] at ($(current page.north west)+(\x,-5.3)$){\faIcon{\icon}};\node[font=\cjkserif\small,text=browntext] at ($(current page.north west)+(\x,-6.05)$){\label};}
+
+\fill[pink] ($(current page.north west)+(8.9,-8.95)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{9.35cm}{8.75cm}{4cm}{工作经历}
+\draw[browntext!12,line width=.8pt,dashed] ($(current page.north west)+(9.5,-10.4)$)--++(0,-8.5);
+\foreach \y/\time/\color in {10.05/{2021.06\\至今}/pink,13.85/{2019.03\\- 2021.05}/green,17.55/{2018.07\\- 2019.02}/pink}{\draw[rounded corners=8pt,fill=\color!30,draw=white,blur shadow={shadow blur steps=4,shadow opacity=.12}] ($(current page.north west)+(8.7,-\y)$) rectangle ++(1.3,-1.15);\node[font=\cjkserif\scriptsize,text=browntext,align=center] at ($(current page.north west)+(9.35,-\y-.58)$){\time};}
+\foreach \y/\role/\company/\lines in {10.0/{高级 UI 设计师}/{知行科技有限公司}/{• 负责公司核心产品的 UI/UX 设计工作，参与产品从 0 到 1 的设计过程；\\• 通过用户研究与分析，优化产品体验，提升用户满意度；\\• 制定设计规范，提升设计系统的一致性和可复用性。},13.75/{UI 设计师}/{灵感互联有限公司}/{• 参与多个项目的设计工作，包括移动端和 Web 端界面设计；\\• 与产品、开发团队紧密合作，推动设计方案的落地；\\• 负责运营活动页面的设计与视觉优化。},17.45/{视觉设计师}/{创想广告有限公司}/{• 负责公司品牌视觉设计与维护；\\• 参与各类广告流程、海报设计及物料设计。}}{\draw[rounded corners=12pt,fill=white,draw=white,blur shadow={shadow blur steps=6,shadow opacity=.12}] ($(current page.north west)+(10.75,-\y)$) rectangle ++(8.2,-2.35);\putnode[font=\cjkserif\bfseries\normalsize,text=browntext]{11.35cm}{\y+.35cm}{7.4cm}{\role};\putnode[font=\cjkserif\small,text=pink!80]{11.35cm}{\y+.92cm}{7.4cm}{\company};\putnode[font=\cjkserif\scriptsize,text=browntext]{11.35cm}{\y+1.45cm}{7.2cm}{\lines};}
+
+\fill[pink] ($(current page.north west)+(8.9,-22.0)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{9.35cm}{21.8cm}{4cm}{教育背景}
+\draw[rounded corners=10pt,fill=white,draw=white,blur shadow={shadow blur steps=5,shadow opacity=.12}] ($(current page.north west)+(10.2,-22.6)$) rectangle ++(8.7,-1.6);
+\node[rounded corners=8pt,fill=green!35,text=green!60!black,minimum size=.95cm] at ($(current page.north west)+(9.25,-23.4)$){\faIcon{graduation-cap}};
+\putnode[font=\cjkserif\small,text=browntext]{10.65cm}{22.92cm}{7.8cm}{2014.09 - 2018.06 \hfill 视觉传达设计（本科）\\上海视觉艺术学院\\主修课程：平面设计、UI 设计、用户体验设计、交互设计、设计心理学等}
+
+\fill[pink] ($(current page.north west)+(8.9,-25.9)$) circle (.12cm);
+\putnode[font=\cjkserif\bfseries\large,text=browntext]{9.35cm}{25.7cm}{4cm}{项目经验}
+\draw[rounded corners=12pt,fill=white,draw=white,blur shadow={shadow blur steps=5,shadow opacity=.12}] ($(current page.north west)+(8.9,-26.7)$) rectangle ++(4.5,-1.7);
+\node[rounded corners=8pt,fill=pink!45,text=white,minimum size=.8cm] at ($(current page.north west)+(9.55,-27.55)$){\faIcon{cat}};
+\putnode[font=\cjkserif\small,text=browntext]{10.25cm}{27.0cm}{3.0cm}{\textbf{喵喵记账 App}\\UI/UX 设计师\\• 负责整体 UI 风格设定与设计；\\• 优化用户操作流程，提升用户体验；}
+\draw[rounded corners=12pt,fill=white,draw=white,blur shadow={shadow blur steps=5,shadow opacity=.12}] ($(current page.north west)+(14.8,-26.7)$) rectangle ++(4.5,-1.7);
+\node[rounded corners=8pt,fill=green!45,text=white,minimum size=.8cm] at ($(current page.north west)+(15.45,-27.55)$){\faIcon{coffee}};
+\putnode[font=\cjkserif\small,text=browntext]{16.15cm}{27.0cm}{3.0cm}{\textbf{小习惯养成平台}\\UI/UX 设计师\\• 参与产品需求分析与用户研究；\\• 设计高效简洁的交互流程；}
+
+\end{tikzpicture}
+\end{document}

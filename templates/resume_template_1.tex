@@ -1,0 +1,74 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{softgray}{HTML}{F7F7F5}
+\definecolor{textgray}{HTML}{55565A}
+\fill[softgray] (current page.south west) rectangle (current page.north east);
+\foreach \x/\op in {1/0.06,3/0.035,6/0.03,12/0.035,18/0.04}{\shade[inner color=white,outer color=softgray,opacity=\op] ($(current page.north west)+(\x,-5)$) circle (3.8cm);}
+
+\putnode[font=\sffamily\large\addfontfeatures{LetterSpace=12}, text=textgray]{1.25cm}{9.3cm}{3.5cm}{DESIGN FOR PEOPLE\\[5pt]SOLVE FOR IMPACT}
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=10}, text=black]{1.25cm}{23.45cm}{3cm}{CONTACT}
+\tinysep{1.25cm}{24.05cm}{4.3cm}{gray!35,line width=.4pt}
+\putnode[font=\sffamily\small, text=textgray]{1.25cm}{24.6cm}{4cm}{hello@yourname.com\\[8pt]+1 555 123 4567\\[8pt]www.yourname.com\\[8pt]New York, NY, USA}
+
+\putnode[font=\sffamily\bfseries\fontsize{30}{34}\selectfont\addfontfeatures{LetterSpace=10}, text=black]{8.15cm}{1.25cm}{11cm}{YOUR NAME}
+\putnode[font=\sffamily\large\addfontfeatures{LetterSpace=18}, text=textgray]{8.2cm}{2.9cm}{10cm}{UI/UX DESIGNER}
+\tinysep{8.2cm}{3.88cm}{19.5cm}{gray!35,line width=.5pt}
+
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{4.65cm}{5cm}{PROFILE}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{5.35cm}{10.2cm}{UI UX Designer with 6+ years of experience designing digital products\\that are intuitive, accessible, and user-centered. I combine strategic\\thinking with clean, functional design to craft experiences that\\solve real problems and create meaningful impact.}
+\tinysep{8.2cm}{7.65cm}{19.5cm}{gray!35,line width=.5pt}
+
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{8.25cm}{5cm}{EXPERIENCE}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{9.15cm}{2.6cm}{2021 --- Present}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{9.15cm}{7.8cm}{\textbf{\addfontfeatures{LetterSpace=4}SENIOR UI/UX DESIGNER}\\Company Name, New York, NY\\[4pt]Lead product design for web and mobile applications.\\Define user flows, wireframes, prototypes, and visual systems.}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{11.65cm}{2.6cm}{2018 --- 2021}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{11.65cm}{7.8cm}{\textbf{\addfontfeatures{LetterSpace=4}UI/UX DESIGNER}\\Company Name, New York, NY\\[4pt]Designed and delivered user-centered solutions for\\SaaS platforms and marketing websites.}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{14.15cm}{2.6cm}{2016 --- 2018}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{14.15cm}{7.8cm}{\textbf{\addfontfeatures{LetterSpace=4}PRODUCT DESIGNER}\\Company Name, San Francisco, CA\\[4pt]Collaborated with product and engineering teams\\to create intuitive and engaging digital experiences.}
+\tinysep{8.2cm}{16.35cm}{19.5cm}{gray!35,line width=.5pt}
+
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{16.85cm}{5cm}{PROJECTS}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{17.65cm}{2.2cm}{2023}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{17.65cm}{7.8cm}{\textbf{PROJECT NAME}\\Designed a comprehensive dashboard for analytics platform\\to visualize complex data and improve decision-making.}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{19.10cm}{2.2cm}{2022}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{19.10cm}{7.8cm}{\textbf{PROJECT NAME}\\Redesigned the mobile app experience with a focus on\\simplicity, usability, and accessibility.}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{20.65cm}{2.2cm}{2021}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{20.65cm}{7.8cm}{\textbf{PROJECT NAME}\\Created a scalable design system to unify product experience\\across web and mobile platforms.}
+\tinysep{8.2cm}{22.05cm}{19.5cm}{gray!35,line width=.5pt}
+
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{22.55cm}{5cm}{EDUCATION}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{23.25cm}{2.5cm}{2012 --- 2016}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{23.25cm}{7.8cm}{\textbf{BACHELOR OF DESIGN}\\Your University Name, New York, NY\\Major in Communication Design}
+\tinysep{8.2cm}{24.80cm}{19.5cm}{gray!35,line width=.5pt}
+
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{25.30cm}{5cm}{SKILLS}
+\putnode[font=\sffamily\scriptsize, text=textgray]{8.2cm}{26.05cm}{4.6cm}{User Research\\Wireframing\\Prototyping\\Interaction Design\\Visual Design\\Design Systems\\Figma\\Sketch\\Adobe Creative Suite\\HTML / CSS (Basic)}
+\putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=6}]{13.55cm}{25.30cm}{6cm}{AWARDS \& LANGUAGE}
+\putnode[font=\sffamily\scriptsize, text=textgray]{13.55cm}{26.05cm}{5.5cm}{\textbf{\addfontfeatures{LetterSpace=4}AWARDS}\\Red Dot Design Award -- 2022\\iF Design Award -- 2021\\[8pt]\textbf{\addfontfeatures{LetterSpace=4}LANGUAGE}\\English (Native)\\Chinese (Conversational)}
+
+\end{tikzpicture}
+\end{document}

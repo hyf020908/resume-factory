@@ -1,0 +1,108 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{kraft}{HTML}{B99061}
+\definecolor{paper}{HTML}{F8F0DE}
+\definecolor{tape}{HTML}{8ABBAA}
+\definecolor{yellow}{HTML}{F0C84B}
+\definecolor{pink}{HTML}{D99A87}
+\definecolor{bluegray}{HTML}{9DAABD}
+\fill[kraft!75] (current page.south west) rectangle (current page.north east);
+\foreach \i in {1,...,240}{\fill[black,opacity=.035] ($(current page.south west)+(rand*21,rand*29.7)$) circle (.02cm);}
+\draw[black!50,line width=1.4pt,rounded corners=11pt] ($(current page.north west)+(.22,-.22)$) rectangle ($(current page.south east)+(-.22,.22)$);
+\newcommand{\paperbox}[5]{\draw[fill=#5,draw=black!18,line width=.3pt,decorate,decoration={random steps,segment length=8pt,amplitude=1.2pt},blur shadow={shadow blur steps=4,shadow opacity=.18}] ($(current page.north west)+(#1,-#2)$) rectangle ++(#3,-#4);}
+\newcommand{\tape}[4]{\draw[fill=#4,draw=#4,opacity=.7,rotate around={-4:($(current page.north west)+(#1,-#2)$)}] ($(current page.north west)+(#1,-#2)$) rectangle ++(#3,.42);}
+
+% polaroid and header
+\draw[fill=white,draw=black!15,rotate around={-5:($(current page.north west)+(3.05,-2.65)$)},blur shadow={shadow blur steps=4,shadow opacity=.22}] ($(current page.north west)+(1.05,-.8)$) rectangle ++(4.1,-5.25);
+\draw[fill=black!15,draw=none,rotate around={-5:($(current page.north west)+(3.05,-2.65)$)}] ($(current page.north west)+(1.45,-1.15)$) rectangle ++(3.3,-3.6);
+\node[rotate=-5,font=\scriptsize,text=white!90] at ($(current page.north west)+(3.1,-2.8)$) {PHOTO};
+\tape{1.55cm}{.55cm}{2.55cm}{tape}
+\node[font=\scriptlatin\bfseries\fontsize{40}{42}\selectfont,text=black] at ($(current page.north west)+(9.6,-1.65)$) {Hello!};
+\draw[yellow,line width=9pt,opacity=.8] ($(current page.north west)+(7.55,-1.85)$)--++(5.2,.25);
+\node[font=\monolatin\Large,text=black] at ($(current page.north west)+(8.55,-3.25)$) {This is};
+\draw[->,black,line width=.8pt] ($(current page.north west)+(8.1,-3.35)$)..controls +(0,-.7) and +(-.7,.0)..++(1.1,-1.0);
+\node[font=\scriptlatin\bfseries\fontsize{26}{28}\selectfont,text=black] at ($(current page.north west)+(11.25,-3.55)$) {Lily Zhang♡};
+\tape{9.95cm}{4.65cm}{3.9cm}{tape}
+\node[font=\monolatin\Large,text=black] at ($(current page.north west)+(11.8,-4.86)$) {UI UX Designer};
+\paperbox{16.05cm}{.85cm}{3.15cm}{2.3cm}{white!90}
+\node[font=\monolatin\small,text=black,align=center,rotate=2] at ($(current page.north west)+(17.65,-1.75)$) {Design\\is thinking\\made\\visual.};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(6.9,-.65)$) {♕};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(18.7,-2.9)$) {♡};
+
+% left small papers
+\paperbox{1.2cm}{7.55cm}{4.9cm}{3.85cm}{paper}
+\tape{1.6cm}{7.25cm}{2.25cm}{tape}
+\node[font=\scriptlatin\bfseries\fontsize{18}{20}\selectfont,anchor=west] at ($(current page.north west)+(1.65,-7.75)$){ABOUT ME};
+\putnode[font=\monolatin\small,text=black]{1.55cm}{8.75cm}{4.15cm}{A passionate UI UX Designer\\who loves turning complex\\problems into simple, beautiful\\and intuitive designs.\\I enjoy learning, collaborating\\and creating meaningful\\user experiences.}
+\draw[->,black,line width=1pt] ($(current page.north west)+(4.65,-10.9)$)--++(1.1,.35);
+\paperbox{1.1cm}{12.55cm}{5.25cm}{3.45cm}{paper}
+\tape{1.45cm}{12.25cm}{2.25cm}{pink}
+\node[font=\scriptlatin\bfseries\fontsize{18}{20}\selectfont,anchor=west] at ($(current page.north west)+(1.55,-12.68)$){CONTACT};
+\putnode[font=\monolatin\scriptsize,text=black]{1.6cm}{13.55cm}{4.4cm}{\faIcon{envelope}　lily.zhang@email.com\\[7pt]\faIcon{phone}　+86 138 1234 5678\\[7pt]\faIcon{map-marker-alt}　Shanghai, China\\[7pt]\faIcon{globe}　dribbble.com/lilyzhang\\[7pt]\faIcon{linkedin}　linkedin.com/in/lilyzhang}
+\paperbox{1.0cm}{16.75cm}{5.15cm}{5.3cm}{yellow!35}
+\tape{2.75cm}{16.5cm}{1.8cm}{tape}
+\node[font=\scriptlatin\bfseries\fontsize{18}{20}\selectfont,anchor=west] at ($(current page.north west)+(1.45,-17.05)$){SKILLS};
+\draw[black,line width=.8pt] ($(current page.north west)+(1.45,-17.65)$)..controls +(1,.45) and +(-1,.45)..++(3.0,0);
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(5.1,-17.37)$){☆};
+\foreach \name/\y/\filled in {UI UX Design/18.35/5,Wireframing/18.95/4,Prototyping/19.55/4,Figma/20.15/4,Adobe Photoshop/20.75/5,Adobe Illustrator/21.35/4,User Research/21.95/4}{\node[anchor=west,font=\monolatin\scriptsize,text=black] at ($(current page.north west)+(1.55,-\y)$){\name};\foreach \i in {0,1,2,3,4}{\fill[black] ($(current page.north west)+(4.45+\i*.36,-\y+.05)$) circle (.07cm);}}
+\paperbox{1.0cm}{23.35cm}{5.5cm}{2.45cm}{white!85}
+\tape{1.7cm}{23.0cm}{1.8cm}{bluegray}
+\putnode[font=\monolatin\normalsize,text=black]{2.0cm}{24.0cm}{3.8cm}{User centered\\Detail oriented\\Always learning}
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(5.25,-24.3)$){☺};
+
+% main torn paper experience
+\paperbox{8.1cm}{6.75cm}{10.9cm}{13.45cm}{paper}
+\foreach \y in {7.2,7.65,...,19.45}{\fill[kraft!70] ($(current page.north west)+(8.05,-\y)$) circle (.07cm);}
+\draw[black!45,dashed,line width=.8pt] ($(current page.north west)+(8.65,-7.05)$)--++(0,-12.6);
+\tape{9.25cm}{6.55cm}{3.3cm}{yellow}
+\node[font=\scriptlatin\bfseries\fontsize{20}{22}\selectfont,anchor=west] at ($(current page.north west)+(9.55,-6.9)$){EXPERIENCE};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(17.4,-7.8)$){☆};
+\putnode[font=\monolatin\normalsize,text=black]{9.25cm}{8.35cm}{8.6cm}{\textbf{Senior UI UX Designer}\\\colorbox{tape!35}{2021.06 -- Present}\\FunTime App, Shanghai\\• Led the end-to-end design process for mobile\\  app and web platform with 1M+ users.\\• Conducted user research and usability tests to\\  optimize product experience.\\• Collaborated with product managers and developers\\  to deliver high-quality solutions.}
+\draw[black!35,dashed] ($(current page.north west)+(8.95,-12.95)$)--++(9.3,0);
+\putnode[font=\monolatin\normalsize,text=black]{9.25cm}{13.35cm}{8.6cm}{\textbf{UI UX Designer}\\\colorbox{tape!35}{2019.03 -- 2021.06}\\CoolTech Company, Shanghai\\• Designed 15+ features for SaaS products.\\• Built design systems and component libraries.\\• Improved user satisfaction by 30\% through\\  data-driven design.}
+\draw[black!35,dashed] ($(current page.north west)+(8.95,-16.85)$)--++(9.3,0);
+\putnode[font=\monolatin\normalsize,text=black]{9.25cm}{17.25cm}{8.6cm}{\textbf{Junior Designer}\\\colorbox{tape!35}{2018.06 -- 2019.02}\\Creative Studio, Shanghai\\• Assisted in UI design and visual design projects.\\• Created wireframes, mockups and interactive\\  prototypes.\\• Supported branding and graphic design tasks.}
+\node[font=\scriptlatin\Large,text=pink!80] at ($(current page.north west)+(17.2,-14.7)$){♡};
+\draw[->,black,line width=1pt] ($(current page.north west)+(17.5,-15.9)$)..controls +(.6,.2) and +(.1,-.5)..++(.8,-.8);
+
+% bottom papers
+\paperbox{7.45cm}{21.0cm}{5.1cm}{4.3cm}{paper}
+\tape{8.2cm}{20.75cm}{2.6cm}{bluegray}
+\node[font=\scriptlatin\bfseries\fontsize{18}{20}\selectfont,anchor=west] at ($(current page.north west)+(8.45,-21.05)$){EDUCATION};
+\putnode[font=\monolatin\small,text=black]{8.35cm}{22.45cm}{3.7cm}{Bachelor of Fine Arts\\in Visual Communication\\Tongji University\\\colorbox{tape!35}{2014.09 -- 2018.06}\\[6pt]GPA: 3.7/4.0}
+\node[circle,draw=green!60,rotate=10,font=\scriptsize,text=green!65!black,align=center] at ($(current page.north west)+(11.4,-22.2)$){GOOD\\THINGS\\TAKE TIME};
+\paperbox{13.2cm}{21.0cm}{5.6cm}{4.75cm}{paper}
+\tape{14.0cm}{20.75cm}{2.8cm}{pink}
+\node[font=\scriptlatin\bfseries\fontsize{18}{20}\selectfont,anchor=west] at ($(current page.north west)+(14.35,-21.05)$){PROJECTS};
+\putnode[font=\monolatin\small,text=black]{13.75cm}{22.05cm}{4.75cm}{\textbf{FunTime Mobile App} \hfill \colorbox{yellow!55}{2022}\\A lifestyle community app that\\helps users discover and share\\exciting experiences.\\• My Role: Lead Designer\\[5pt]\rule{4.1cm}{.3pt}\\[5pt]\textbf{Travel Planner Web} \hfill \colorbox{yellow!55}{2021}\\A web platform for personalized\\travel planning and itinerary\\management.\\• My Role: UI UX Designer}
+\paperbox{5.2cm}{26.5cm}{10.2cm}{1.45cm}{paper}
+\node[font=\monolatin\normalsize\itshape,text=black] at ($(current page.north west)+(10.3,-27.2)$){The best design is the one that solves\\problems and creates emotions.};
+\node[font=\scriptlatin\Large,text=pink] at ($(current page.north west)+(15.2,-27.25)$){♡};
+\draw[->,black,line width=1pt] ($(current page.north west)+(16.3,-28.1)$)--++(1.2,.22);
+
+\end{tikzpicture}
+\end{document}

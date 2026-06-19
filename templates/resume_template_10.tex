@@ -1,0 +1,90 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{cream}{HTML}{FBF8EF}
+\definecolor{green}{HTML}{8DA075}
+\definecolor{leaf}{HTML}{6F8B70}
+\definecolor{gold}{HTML}{E8C653}
+\definecolor{text}{HTML}{5C524A}
+\fill[cream] (current page.south west) rectangle (current page.north east);
+\foreach \i in {1,...,90}{\fill[green!30,opacity=.08] ($(current page.south west)+(rand*21,rand*29.7)$) circle (.04cm);}
+\newcommand{\leafbranch}[3]{\draw[leaf!45,line width=.7pt] ($(current page.north west)+(#1,-#2)$)..controls +(0,-1) and +(.2,1)..++(#3,-3.6);\foreach \t in {.2,.55,.9,1.25,1.6,1.95,2.3,2.65,3.0}{\fill[leaf!45,opacity=.45,rotate=25] ($(current page.north west)+(#1+\t*#3/3.6,-#2-\t)$) ellipse (.38cm and .16cm);}}
+\leafbranch{.7cm}{.2cm}{1.0cm}
+\leafbranch{18.9cm}{.2cm}{-1.0cm}
+\leafbranch{.9cm}{24.7cm}{1.0cm}
+\leafbranch{19.0cm}{24.2cm}{-1.0cm}
+\putnode[font=\cjkserif\fontsize{33}{36}\selectfont,text=text,align=center]{4.5cm}{1.85cm}{6.5cm}{林 清 语}
+\putnode[font=\cjkserif\normalsize,text=text]{11.25cm}{3.0cm}{5.0cm}{温柔而坚定，向光而行}
+\draw[gold,line width=.5pt] ($(current page.north west)+(10.9,-2.85)$)--++(1.35,0);\node[text=gold,font=\large] at ($(current page.north west)+(13.0,-2.85)$){⌁};
+\putnode[font=\cjkserif\small,text=text]{4.25cm}{4.25cm}{12.3cm}{\textcolor{gold}{●} 求职意向　　心理咨询师 / 心理健康方向 \hfill \textcolor{green}{\faIcon{map-marker-alt}} 期望地点：上海　　\textcolor{gold}{●} 到岗时间：可协商}
+\draw[green!45,line width=1.0pt] ($(current page.north west)+(4.25,-5.1)$)--++(12.6,0);
+\draw[green!35,line width=.8pt] ($(current page.north west)+(6.85,-6.2)$)--++(0,-20.2);
+
+% left column
+\fill[gold!75] ($(current page.north west)+(1.35,-6.35)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{1.65cm}{6.15cm}{4cm}{个人简介}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(1.25,-7.05)$)--++(3.55,0);
+\putnode[font=\cjkserif\small,text=text]{1.35cm}{7.75cm}{4.7cm}{心理学专业背景，热爱心理咨询\\与助人工作，具备良好的共情能\\力与倾听能力。善于学习与整合\\多元知识，关注个体成长与心理\\健康推广，期待在专业领域持续\\深耕，为更多人带来温暖与支持。}
+\fill[gold!75] ($(current page.north west)+(1.35,-12.3)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{1.65cm}{12.1cm}{4cm}{联系方式}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(1.25,-13.0)$)--++(3.55,0);
+\putnode[font=\cjkserif\small,text=text]{1.35cm}{13.65cm}{4.7cm}{\textcolor{green}{\faIcon{phone}}　138-0000-0000\\[6pt]\textcolor{green}{\faIcon{envelope}}　linqingyu@example.com\\[6pt]\textcolor{green}{\faIcon{map-marker-alt}}　上海市浦东新区 XX 路 88 号\\[6pt]\textcolor{green}{\faIcon{calendar}}　1998.05.20\\[6pt]\textcolor{green}{\faIcon{weixin}}　Linqingyu\_520}
+\fill[gold!75] ($(current page.north west)+(1.35,-18.05)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{1.65cm}{17.85cm}{4cm}{专业技能}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(1.25,-18.75)$)--++(3.55,0);
+\foreach \name/\y/\dots in {心理咨询基础/19.65/4,倾听与共情/20.25/4,心理评估与测量/20.85/4,团体辅导与带领/21.45/4,危机干预与疏导/22.05/4,PPT、文档、Excel/22.65/5,SPSS、问卷星/23.25/4,英语（CET-6）/23.85/4}{\node[anchor=west,font=\cjkserif\scriptsize,text=text] at ($(current page.north west)+(1.35,-\y)$){•　\name};\foreach \i in {0,1,2,3,4}{\fill[green!60] ($(current page.north west)+(4.55+\i*.3,-\y+.03)$) circle (.06cm);}}
+
+% right top sections
+\fill[gold!75] ($(current page.north west)+(7.45,-6.35)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{7.75cm}{6.15cm}{4cm}{教育经历}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(7.45,-7.05)$)--++(8.6,0);
+\putnode[font=\cjkserif\normalsize,text=text]{7.65cm}{7.55cm}{11.5cm}{\textbf{华东师范大学} \hfill 应用心理学（本科） \hfill 2020.09 - 2024.06\\• 主修课程：普通心理学、发展心理学、社会心理学、心理咨询与治疗、\\　心理测量、人格心理学、团体心理辅导等\\• GPA：3.72/4.0（专业前 15\%）}
+\fill[gold!75] ($(current page.north west)+(7.45,-10.2)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{7.75cm}{10.0cm}{4cm}{实习经历}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(7.45,-10.9)$)--++(8.6,0);
+\putnode[font=\cjkserif\normalsize,text=text]{7.65cm}{11.35cm}{11.5cm}{\textbf{上海市精神卫生中心}　心理咨询实习生 \hfill 2023.07 - 2023.11\\• 在资深咨询师指导下开展个体咨询，累计个案时长 80+ 小时\\• 参与团体心理辅导与心理健康讲座，协助策划并执行活动 3 场\\[7pt]\textbf{XX 心理咨询工作室}　助理咨询师 \hfill 2022.03 - 2022.06\\• 协助接待来访者，完成咨询前评估与咨询记录整理\\• 参与咨询室日常运营与内容输出，撰写心理科普文章 5 篇}
+\fill[gold!75] ($(current page.north west)+(7.45,-15.4)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{7.75cm}{15.2cm}{4cm}{项目经历}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(7.45,-16.1)$)--++(8.6,0);
+\putnode[font=\cjkserif\normalsize,text=text]{7.65cm}{16.55cm}{11.5cm}{\textbf{大学生心理健康支持项目（校级）} \hfill 2023.03 - 2023.06\\• 担任项目负责人，等领团队完成心理调研与需求分析\\• 设计并实施线上心理支持计划，服务同学 300+，满意度 90\%+\\[7pt]\textbf{焦虑情绪干预小组（课程项目）} \hfill 2022.10 - 2022.12\\• 独立设计 8 次团体辅导方案并带领实施\\• 通过前后测评估干预效果，焦虑水平显著下降（p<0.05）}
+
+\draw[green!35,line width=.8pt] ($(current page.north west)+(13.05,-21.05)$)--++(0,-4.35);
+\fill[gold!75] ($(current page.north west)+(7.45,-20.7)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{7.75cm}{20.5cm}{4cm}{校园经历}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(7.45,-21.25)$)--++(4.4,0);
+\putnode[font=\cjkserif\small,text=text]{7.65cm}{21.75cm}{4.9cm}{\textbf{心理学系学生会　副主席} \hfill 2021.09 - 2022.09\\• 组织“心理游园会”等品牌活动 5 场，参与人数 1000+\\• 统筹团队运营与成员培训，提升团队凝聚力与执行力\\[6pt]\textbf{朋辈心理互助员} \hfill 2021.03 - 至今\\• 在校心理咨询中心值班，提供倾听与陪伴服务\\• 参与危机预警培训，协助开展心理健康宣传活动}
+\fill[gold!75] ($(current page.north west)+(13.65,-20.7)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{13.95cm}{20.5cm}{4cm}{荣誉奖项}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(13.65,-21.25)$)--++(4.4,0);
+\putnode[font=\cjkserif\small,text=text]{13.85cm}{21.75cm}{4.9cm}{• 国家励志奖学金 \hfill 2022\\• 校级优秀学生一等奖学金 \hfill 2021\\• 校级优秀学生干部 \hfill 2022\\• 心理健康教育优秀志愿者 \hfill 2021\\• 全国大学生心理学知识竞赛二等奖 \hfill 2021\\• 英语六级（CET-6） \hfill 2022}
+\fill[gold!75] ($(current page.north west)+(7.45,-26.0)$) circle (.14cm);
+\putnode[font=\cjkserif\bfseries\large,text=text]{7.75cm}{25.8cm}{4cm}{自我评价}
+\draw[green!45,line width=.8pt] ($(current page.north west)+(7.45,-26.5)$)--++(9.6,0);
+\putnode[font=\cjkserif\small,text=text]{7.65cm}{27.0cm}{10.5cm}{真诚、耐心、细致，具备良好的沟通能力与责任感，能够在专业伦理框架下开展助人工作。\\持续学习心理学理论与咨询技术，注重自我觉察与成长。希望在未来的工作中，陪伴更多\\人探索自我、接纳自我、实现内心的力量与平衡。}
+\draw[gold!75,line width=.6pt] ($(current page.south east)+(-3.0,1.0)$)..controls +(1.5,.6) and +(-1,.2)..++(2.4,.1);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,82 @@
+
+\documentclass[10pt]{article}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shadows.blur,shapes.geometric,decorations.pathmorphing,decorations.pathreplacing,patterns}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontawesome5}
+\pagestyle{empty}
+\setmainfont{TeXGyreHeros}
+\setsansfont{TeXGyreHeros}
+\setmonofont{Noto Sans Mono CJK SC}
+\setCJKmainfont{Noto Sans CJK SC}
+\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
+\newfontfamily\seriflatin{TeXGyreTermes}
+\newfontfamily\scriptlatin{TeXGyreChorus}
+\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setlength{\parindent}{0pt}
+\newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
+\newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
+
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+
+\definecolor{cream}{HTML}{F2E2C6}
+\definecolor{blue}{HTML}{003B96}
+\definecolor{red}{HTML}{E32822}
+\definecolor{yellow}{HTML}{F7BA00}
+\definecolor{blackish}{HTML}{111111}
+\fill[cream] (current page.south west) rectangle (current page.north east);
+\foreach \i in {1,...,140}{\fill[black,opacity=.025] ($(current page.south west)+(rand*21,rand*29.7)$) circle (.025cm);}
+\fill[blue] ($(current page.north west)+(.45,-.45)$) rectangle ++(.6,-6.9);
+\putnode[font=\sffamily\bfseries\fontsize{42}{42}\selectfont,text=blackish]{1.65cm}{1.1cm}{8.5cm}{YOUR\\NAME}
+\putnode[font=\sffamily\bfseries\Large\addfontfeatures{LetterSpace=8},text=blackish]{1.72cm}{5.8cm}{7.2cm}{CREATIVE DESIGNER}
+\draw[blackish,line width=1pt] ($(current page.north west)+(1.72,-6.75)$)--++(8.6,0);
+\fill[red] ($(current page.north west)+(-2.4,-7.0)$) circle (3.9cm);
+\fill[blue] ($(current page.north west)+(5.7,-7.1)$) rectangle ++(5.55,-3.2);
+\fill[yellow] ($(current page.north west)+(11.25,-.65)$) rectangle ($(current page.north east)+(-.45,-9.05)$);
+\fill[blue] ($(current page.north east)+(-4.3,-.1)$) circle (1.95cm);
+\fill[cream!80] ($(current page.north east)+(-.45,-1.95)$) -- ++(0,-2.5) -- ++(-1.1,1.1) -- cycle;
+
+% left contact/skills column
+\fill[yellow] ($(current page.north west)+(.45,-11.2)$) rectangle ++(5.25,-5.2);
+\putnode[font=\sffamily\bfseries\Large,text=blackish]{1.05cm}{12.15cm}{4cm}{CONTACT}
+\draw[blackish,line width=1pt] ($(current page.north west)+(1.05,-12.85)$)--++(.75,0);
+\putnode[font=\sffamily\small\bfseries,text=blackish]{1.05cm}{13.6cm}{4.4cm}{\faIcon{envelope}　hello@yourname.com\\[9pt]\faIcon{phone}　(123) 456-7890\\[9pt]\faIcon{globe}　www.yourname.com\\[9pt]\faIcon{map-marker-alt}　New York, NY}
+\putnode[font=\sffamily\bfseries\Large,text=blackish]{1.05cm}{17.55cm}{4cm}{SKILLS}
+\draw[blackish,line width=1pt] ($(current page.north west)+(1.05,-18.25)$)--++(.75,0);
+\foreach \name/\y/\boxes in {BRANDING/19.35/5,TYPOGRAPHY/20.0/4.5,LAYOUT DESIGN/20.65/5,UI UX DESIGN/21.3/4.5,ILLUSTRATION/21.95/4.5,PHOTO EDITING/22.6/4.5}{\node[anchor=west,font=\sffamily\scriptsize\bfseries,text=blackish] at ($(current page.north west)+(1.05,-\y)$){\name};\foreach \i in {0,1,2,3,4}{\draw[fill=blackish] ($(current page.north west)+(3.15+\i*.33,-\y+.06)$) rectangle ++(.18,-.18);}}
+\fill[blackish] ($(current page.south west)+(.45,.45)$) rectangle ++(5.25,4.45);
+\fill[blue] ($(current page.south west)+(.45,.45)$) -- ++(5.25,0) -- ++(-5.25,4.45) -- cycle;
+\fill[yellow] ($(current page.south west)+(3.6,2.2)$) circle (.72cm);
+
+% middle red experience
+\fill[red] ($(current page.north west)+(5.7,-9.05)$) rectangle ++(7.75,-14.2);
+\putnode[font=\sffamily\bfseries\fontsize{22}{24}\selectfont,text=white]{6.55cm}{10.55cm}{4cm}{EXPERIENCE}
+\draw[blackish,line width=1pt] ($(current page.north west)+(6.55,-11.55)$)--++(.85,0);
+\draw[blackish,line width=.9pt] ($(current page.north west)+(6.65,-12.6)$)--++(0,-7.3);
+\foreach \y in {12.6,15.9,19.1}{\fill[blackish] ($(current page.north west)+(6.65,-\y)$) circle (.14cm);}
+\putnode[font=\sffamily\small,text=white]{7.15cm}{12.25cm}{5.4cm}{\textbf{2021 -- PRESENT}\\\textbf{\large SENIOR DESIGNER}\\Studio Modern, New York, NY\\[4pt]Lead creative projects from concept to delivery.\\Collaborate with clients and teams to craft\\impactful brand and digital experiences.\\[12pt]\textbf{2018 -- 2021}\\\textbf{\large DESIGNER}\\Bright Works, Brooklyn, NY\\[4pt]Designed branding, web, and print materials for\\diverse clients. Developed visual concepts and\\maintained brand consistency.\\[12pt]\textbf{2016 -- 2018}\\\textbf{\large JUNIOR DESIGNER}\\Design District, New York, NY\\[4pt]Supported senior designers on projects\\including layout, iconography, and social\\media visuals.}
+
+% right projects
+\fill[blue] ($(current page.north west)+(13.45,-9.05)$) rectangle ($(current page.north east)+(-.45,-23.25)$);
+\putnode[font=\sffamily\bfseries\fontsize{22}{24}\selectfont,text=white]{14.1cm}{10.55cm}{4cm}{PROJECTS}
+\draw[blackish,line width=1pt] ($(current page.north west)+(14.1,-11.55)$)--++(.85,0);
+\foreach \y/\title/\year/\desc in {12.55/{BRAND IDENTITY SYSTEM}/2024/{Created a complete brand identity\\for a lifestyle startup including logo,\\colors, typography, and guidelines.},16.0/{WEBSITE REDESIGN}/2023/{Designed and prototyped a modern,\\responsive website to improve\\usability and engagement.},19.45/{PRINT CAMPAIGN}/2022/{Conceptualized and designed a\\print campaign for a cultural\\exhibition series.}}{\fill[yellow] ($(current page.north west)+(14.1,-\y+.12)$) rectangle ++(.22,-.22);\putnode[font=\sffamily\small,text=white]{14.7cm}{\y-.2cm}{4.5cm}{\textbf{\large \title}\\\year\\[4pt]\desc};\draw[blackish,line width=.7pt] ($(current page.north west)+(14.1,-\y-2.3)$)--++(5.3,0);}
+
+% education bottom
+\fill[blackish] ($(current page.south west)+(5.7,.45)$) rectangle ++(2.35,5.9);
+\fill[cream] ($(current page.south west)+(8.05,.45)$) rectangle ($(current page.south east)+(-4.1,6.35)$);
+\fill[red] ($(current page.south east)+(-4.1,.45)$) -- ++(4.1,4.0) -- ++(0,-4.0) -- cycle;
+\fill[yellow] ($(current page.south east)+(-4.1,.45)$) rectangle ++(4.1,2.7);
+\putnode[font=\sffamily\bfseries\fontsize{21}{24}\selectfont,text=blackish]{8.85cm}{23.75cm}{4cm}{EDUCATION}
+\draw[blackish,line width=1pt] ($(current page.north west)+(8.85,-24.55)$)--++(.75,0);
+\draw[blackish,line width=.9pt] ($(current page.north west)+(9.0,-25.25)$)--++(0,-2.3);
+\fill[blackish] ($(current page.north west)+(9.0,-25.25)$) circle (.14cm);\fill[blackish] ($(current page.north west)+(9.0,-27.55)$) circle (.14cm);
+\putnode[font=\sffamily\small,text=blackish]{9.55cm}{25.0cm}{6.2cm}{\textbf{2012 -- 2016}\\\textbf{BACHELOR OF FINE ARTS}\\School of Visual Arts\\New York, NY\\[10pt]\textbf{2010 -- 2012}\\\textbf{ASSOCIATE DEGREE}\\in Graphic Design\\City College, New York, NY}
+
+\end{tikzpicture}
+\end{document}
