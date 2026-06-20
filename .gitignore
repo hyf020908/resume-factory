@@ -35,10 +35,7 @@ venv/
 
 # User-provided private inputs
 inputs/*
-!inputs/.gitkeep
 
 # Generated resumes and previews
 outputs/*
-!outputs/.gitkeep
 *_preview.png
-

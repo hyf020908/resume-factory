@@ -9,14 +9,18 @@
 \usepackage{graphicx}
 \usepackage{fontawesome5}
 \pagestyle{empty}
-\setmainfont{TeXGyreHeros}
-\setsansfont{TeXGyreHeros}
-\setmonofont{Noto Sans Mono CJK SC}
-\setCJKmainfont{Noto Sans CJK SC}
-\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
-\newfontfamily\seriflatin{TeXGyreTermes}
-\newfontfamily\scriptlatin{TeXGyreChorus}
-\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setmainfont{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf,BoldItalicFont=FandolKai-Regular.otf,BoldItalicFeatures={FakeBold=1.5}]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\newCJKfontfamily\cjkserif{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf,ItalicFont=FandolKai-Regular.otf,BoldItalicFont=FandolKai-Regular.otf,BoldItalicFeatures={FakeBold=1.5}]
+\newfontfamily\seriflatin{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\scriptlatin{texgyrechorus-mediumitalic.otf}[BoldFont=texgyrechorus-mediumitalic.otf,BoldFeatures={FakeBold=1.5}]
+\newfontfamily\monolatin{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\symbolfont{FreeSerif.otf}
+\newcommand{\sym}[1]{{\mdseries\upshape\symbolfont #1}}
 \setlength{\parindent}{0pt}
 \newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
 \newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
@@ -41,23 +45,23 @@
 \node[font=\scriptsize,text=navy!45] at ($(current page.north)+(0,-2.0)$) {PHOTO};
 \putnode[font=\seriflatin\fontsize{34}{38}\selectfont,text=navy,align=center]{3.0cm}{6.0cm}{15.0cm}{ÉLÉONORE DUMONT}
 \putnode[font=\seriflatin\large\addfontfeatures{LetterSpace=5},text=gold,align=center]{4.2cm}{7.3cm}{12.6cm}{RESPONSABLE MARKETING \& COMMUNICATION}
-\draw[gold!55,line width=.4pt] ($(current page.north)+( -3.5,-8.05)$)--++(2.8,0);\draw[gold!55,line width=.4pt] ($(current page.north)+( .7,-8.05)$)--++(2.8,0);\node[text=gold] at ($(current page.north)+(0,-8.05)$){✣};
+\draw[gold!55,line width=.4pt] ($(current page.north)+( -3.5,-8.05)$)--++(2.8,0);\draw[gold!55,line width=.4pt] ($(current page.north)+( .7,-8.05)$)--++(2.8,0);\node[text=gold] at ($(current page.north)+(0,-8.05)$){\sym{✣}};
 
 \putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{6.2cm}{8.75cm}{8.6cm}{• À PROPOS DE MOI •}
 \putnode[font=\seriflatin\normalsize,text=navy,align=left]{4.25cm}{9.65cm}{12.5cm}{\textcolor{gold}{\fontsize{38}{38}\selectfont P}\hspace{.1cm}assionnée par l’art de raconter des histoires et de créer des connexions authentiques, j’évolue depuis\\plus de 6 ans dans l’univers du marketing et de la communication. Curieuse, élégante et rigoureuse,\\j’aime transformer des idées en expériences mémorables qui apportent de la valeur et du sens.}
-\draw[gold!55,line width=.4pt] ($(current page.north)+( -2.1,-12.35)$)--++(1.65,0);\draw[gold!55,line width=.4pt] ($(current page.north)+( .45,-12.35)$)--++(1.65,0);\node[text=gold] at ($(current page.north)+(0,-12.35)$){✥};
+\draw[gold!55,line width=.4pt] ($(current page.north)+( -2.1,-12.35)$)--++(1.65,0);\draw[gold!55,line width=.4pt] ($(current page.north)+( .45,-12.35)$)--++(1.65,0);\node[text=gold] at ($(current page.north)+(0,-12.35)$){\sym{✥}};
 
-\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{1.9cm}{13.1cm}{4.8cm}{• EXPERIENCES •}
-\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{8.0cm}{13.1cm}{4.6cm}{• FORMATION •}
-\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{14.3cm}{13.1cm}{4.9cm}{• COMPÉTENCES •}
+\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{1.9cm}{13.1cm}{4.8cm}{\sym{•} EXPERIENCES \sym{•}}
+\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{8.0cm}{13.1cm}{4.6cm}{\sym{•} FORMATION \sym{•}}
+\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{14.3cm}{13.1cm}{4.9cm}{\sym{•} COMPÉTENCES \sym{•}}
 \draw[gold!55,line width=.55pt] ($(current page.north west)+(7.65,-13.8)$)--++(0,-8.55);\draw[gold!55,line width=.55pt] ($(current page.north west)+(13.35,-13.8)$)--++(0,-8.55);
 \draw[gold!65,line width=.6pt] ($(current page.north west)+(1.55,-14.7)$)--++(0,-6.7);\foreach \y in {14.7,17.9,21.0}{\fill[gold] ($(current page.north west)+(1.55,-\y)$) circle (.07cm);}
 \putnode[font=\seriflatin\small,text=navy]{2.05cm}{14.55cm}{4.8cm}{\textbf{RESPONSABLE MARKETING}\\\textbf{LUXE \& CO. PARIS}\\\textcolor{gold}{2021 -- PRÉSENT}\\• Élaborer et piloter la stratégie marketing\\• Développer l’image de marque et la notoriété\\• Manager une équipe de 5 personnes\\[8pt]\rule{1.35cm}{.3pt}\\[8pt]\textbf{CHEF DE PROJET MARKETING}\\\textbf{MAISON D’ÉLÉGANCE}\\\textcolor{gold}{2018 -- 2021}\\• Gestion de campagnes digitales et print\\• Analyse des performances et reporting\\• Collaboration avec les équipes créatives\\[8pt]\rule{1.35cm}{.3pt}\\[8pt]\textbf{ASSISTANTE MARKETING}\\\textbf{ATELIER SAINT-GERMAIN}\\\textcolor{gold}{2016 -- 2018}\\• Support à la mise en œuvre des actions marketing\\• Veille concurrentielle et études de marché\\• Organisation d’événements et salons}
-\putnode[font=\seriflatin\small,text=navy,align=center]{8.55cm}{14.6cm}{3.7cm}{\textcolor{gold}{✥}\\[8pt]\textbf{MASTER 2}\\\textbf{MARKETING \& LUXE}\\\textbf{ESSEC BUSINESS SCHOOL}\\\textcolor{gold}{2014 -- 2016}\\[14pt]\textcolor{gold}{✧}\\[8pt]\textbf{LICENCE ÉCONOMIE}\\\textbf{\& GESTION}\\\textbf{UNIVERSITÉ PARIS DAUPHINE}\\\textcolor{gold}{2011 -- 2014}\\[16pt]\textcolor{gold}{“}\\\textit{L’élégance\\est la seule beauté\\qui ne se fane jamais.}\\[4pt]\textcolor{gold}{-- AUDREY HEPBURN --}\\\textcolor{gold}{”}}
-\putnode[font=\seriflatin\small,text=navy]{14.55cm}{14.65cm}{4.7cm}{\textcolor{gold}{COMPÉTENCES CLÉS}\\[4pt]Stratégie Marketing\\Branding \& Image de Marque\\Communication Digitale\\Gestion de Projet\\Analyse de Données\\Relations Presse \& Influence\\[12pt]\rule{3.8cm}{.3pt}\\[8pt]\textcolor{gold}{OUTILS}\\[4pt]Adobe Creative Suite \hfill \textcolor{gold}{● ● ● ● ○}\\Microsoft Office \hfill \textcolor{gold}{● ● ● ● ◐}\\Google Analytics \hfill \textcolor{gold}{● ● ● ○ ○}\\Notion \hfill \textcolor{gold}{● ● ● ○ ○}\\Mailchimp \hfill \textcolor{gold}{● ● ● ● ○}}
+\putnode[font=\seriflatin\small,text=navy,align=center]{8.55cm}{14.6cm}{3.7cm}{\textcolor{gold}{\sym{✥}}\\[8pt]\textbf{MASTER 2}\\\textbf{MARKETING \& LUXE}\\\textbf{ESSEC BUSINESS SCHOOL}\\\textcolor{gold}{2014 -- 2016}\\[14pt]\textcolor{gold}{\sym{✧}}\\[8pt]\textbf{LICENCE ÉCONOMIE}\\\textbf{\& GESTION}\\\textbf{UNIVERSITÉ PARIS DAUPHINE}\\\textcolor{gold}{2011 -- 2014}\\[16pt]\textcolor{gold}{“}\\\textit{L’élégance\\est la seule beauté\\qui ne se fane jamais.}\\[4pt]\textcolor{gold}{-- AUDREY HEPBURN --}\\\textcolor{gold}{”}}
+\putnode[font=\seriflatin\small,text=navy]{14.55cm}{14.65cm}{4.7cm}{\textcolor{gold}{COMPÉTENCES CLÉS}\\[4pt]Stratégie Marketing\\Branding \& Image de Marque\\Communication Digitale\\Gestion de Projet\\Analyse de Données\\Relations Presse \& Influence\\[12pt]\rule{3.8cm}{.3pt}\\[8pt]\textcolor{gold}{OUTILS}\\[4pt]Adobe Creative Suite \hfill \textcolor{gold}{\sym{● ● ● ● ○}}\\Microsoft Office \hfill \textcolor{gold}{\sym{● ● ● ● ◐}}\\Google Analytics \hfill \textcolor{gold}{\sym{● ● ● ○ ○}}\\Notion \hfill \textcolor{gold}{\sym{● ● ● ○ ○}}\\Mailchimp \hfill \textcolor{gold}{\sym{● ● ● ● ○}}}
 
 \draw[gold!55,line width=.4pt] ($(current page.south west)+(4.2,4.35)$)--++(4.0,0);\draw[gold!55,line width=.4pt] ($(current page.south west)+(12.8,4.35)$)--++(4.0,0);\node[text=gold] at ($(current page.south west)+(10.5,4.35)$){•};
-\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{7.3cm}{24.9cm}{6.4cm}{• INFORMATIONS •}
+\putnode[font=\seriflatin\bfseries\Large,text=navy,align=center]{7.3cm}{24.9cm}{6.4cm}{\sym{•} INFORMATIONS \sym{•}}
 \foreach \x/\icon/\t in {3.7/phone/{06 12 34 56 78},7.9/envelope/{eleonore.dumont@email.com},12.1/map-marker-alt/{Paris, France},16.3/linkedin/{linkedin.com/in/eleonore-dumont}}{\node[circle,draw=gold,text=gold,minimum size=.75cm] at ($(current page.south west)+(\x,2.6)$){\faIcon{\icon}};\node[font=\seriflatin\small,text=navy,align=center] at ($(current page.south west)+(\x,1.55)$){\t};}
 \node[text=gold,font=\scriptlatin\fontsize{34}{34}\selectfont] at ($(current page.south)+(0,.85)$) {f};
 

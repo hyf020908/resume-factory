@@ -9,14 +9,18 @@
 \usepackage{graphicx}
 \usepackage{fontawesome5}
 \pagestyle{empty}
-\setmainfont{TeXGyreHeros}
-\setsansfont{TeXGyreHeros}
-\setmonofont{Noto Sans Mono CJK SC}
-\setCJKmainfont{Noto Sans CJK SC}
-\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
-\newfontfamily\seriflatin{TeXGyreTermes}
-\newfontfamily\scriptlatin{TeXGyreChorus}
-\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setmainfont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setCJKmainfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\newCJKfontfamily\cjkserif{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\newfontfamily\seriflatin{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\scriptlatin{texgyrechorus-mediumitalic.otf}[BoldFont=texgyrechorus-mediumitalic.otf,BoldFeatures={FakeBold=1.5}]
+\newfontfamily\monolatin{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\symbolfont{FreeSerif.otf}
+\newcommand{\sym}[1]{{\mdseries\upshape\symbolfont #1}}
 \setlength{\parindent}{0pt}
 \newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
 \newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
@@ -45,13 +49,13 @@
 \draw[yellow,line width=9pt,opacity=.8] ($(current page.north west)+(7.55,-1.85)$)--++(5.2,.25);
 \node[font=\monolatin\Large,text=black] at ($(current page.north west)+(8.55,-3.25)$) {This is};
 \draw[->,black,line width=.8pt] ($(current page.north west)+(8.1,-3.35)$)..controls +(0,-.7) and +(-.7,.0)..++(1.1,-1.0);
-\node[font=\scriptlatin\bfseries\fontsize{26}{28}\selectfont,text=black] at ($(current page.north west)+(11.25,-3.55)$) {Lily Zhang♡};
+\node[font=\scriptlatin\bfseries\fontsize{26}{28}\selectfont,text=black] at ($(current page.north west)+(11.25,-3.55)$) {Lily Zhang\sym{♡}};
 \tape{9.95cm}{4.65cm}{3.9cm}{tape}
 \node[font=\monolatin\Large,text=black] at ($(current page.north west)+(11.8,-4.86)$) {UI UX Designer};
 \paperbox{16.05cm}{.85cm}{3.15cm}{2.3cm}{white!90}
 \node[font=\monolatin\small,text=black,align=center,rotate=2] at ($(current page.north west)+(17.65,-1.75)$) {Design\\is thinking\\made\\visual.};
-\node[font=\scriptlatin\Large] at ($(current page.north west)+(6.9,-.65)$) {♕};
-\node[font=\scriptlatin\Large] at ($(current page.north west)+(18.7,-2.9)$) {♡};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(6.9,-.65)$) {\sym{♕}};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(18.7,-2.9)$) {\sym{♡}};
 
 % left small papers
 \paperbox{1.2cm}{7.55cm}{4.9cm}{3.85cm}{paper}
@@ -67,12 +71,12 @@
 \tape{2.75cm}{16.5cm}{1.8cm}{tape}
 \node[font=\scriptlatin\bfseries\fontsize{18}{20}\selectfont,anchor=west] at ($(current page.north west)+(1.45,-17.05)$){SKILLS};
 \draw[black,line width=.8pt] ($(current page.north west)+(1.45,-17.65)$)..controls +(1,.45) and +(-1,.45)..++(3.0,0);
-\node[font=\scriptlatin\Large] at ($(current page.north west)+(5.1,-17.37)$){☆};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(5.1,-17.37)$){\sym{☆}};
 \foreach \name/\y/\filled in {UI UX Design/18.35/5,Wireframing/18.95/4,Prototyping/19.55/4,Figma/20.15/4,Adobe Photoshop/20.75/5,Adobe Illustrator/21.35/4,User Research/21.95/4}{\node[anchor=west,font=\monolatin\scriptsize,text=black] at ($(current page.north west)+(1.55,-\y)$){\name};\foreach \i in {0,1,2,3,4}{\fill[black] ($(current page.north west)+(4.45+\i*.36,-\y+.05)$) circle (.07cm);}}
 \paperbox{1.0cm}{23.35cm}{5.5cm}{2.45cm}{white!85}
 \tape{1.7cm}{23.0cm}{1.8cm}{bluegray}
 \putnode[font=\monolatin\normalsize,text=black]{2.0cm}{24.0cm}{3.8cm}{User centered\\Detail oriented\\Always learning}
-\node[font=\scriptlatin\Large] at ($(current page.north west)+(5.25,-24.3)$){☺};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(5.25,-24.3)$){\sym{☺}};
 
 % main torn paper experience
 \paperbox{8.1cm}{6.75cm}{10.9cm}{13.45cm}{paper}
@@ -80,13 +84,13 @@
 \draw[black!45,dashed,line width=.8pt] ($(current page.north west)+(8.65,-7.05)$)--++(0,-12.6);
 \tape{9.25cm}{6.55cm}{3.3cm}{yellow}
 \node[font=\scriptlatin\bfseries\fontsize{20}{22}\selectfont,anchor=west] at ($(current page.north west)+(9.55,-6.9)$){EXPERIENCE};
-\node[font=\scriptlatin\Large] at ($(current page.north west)+(17.4,-7.8)$){☆};
+\node[font=\scriptlatin\Large] at ($(current page.north west)+(17.4,-7.8)$){\sym{☆}};
 \putnode[font=\monolatin\normalsize,text=black]{9.25cm}{8.35cm}{8.6cm}{\textbf{Senior UI UX Designer}\\\colorbox{tape!35}{2021.06 -- Present}\\FunTime App, Shanghai\\• Led the end-to-end design process for mobile\\  app and web platform with 1M+ users.\\• Conducted user research and usability tests to\\  optimize product experience.\\• Collaborated with product managers and developers\\  to deliver high-quality solutions.}
 \draw[black!35,dashed] ($(current page.north west)+(8.95,-12.95)$)--++(9.3,0);
 \putnode[font=\monolatin\normalsize,text=black]{9.25cm}{13.35cm}{8.6cm}{\textbf{UI UX Designer}\\\colorbox{tape!35}{2019.03 -- 2021.06}\\CoolTech Company, Shanghai\\• Designed 15+ features for SaaS products.\\• Built design systems and component libraries.\\• Improved user satisfaction by 30\% through\\  data-driven design.}
 \draw[black!35,dashed] ($(current page.north west)+(8.95,-16.85)$)--++(9.3,0);
 \putnode[font=\monolatin\normalsize,text=black]{9.25cm}{17.25cm}{8.6cm}{\textbf{Junior Designer}\\\colorbox{tape!35}{2018.06 -- 2019.02}\\Creative Studio, Shanghai\\• Assisted in UI design and visual design projects.\\• Created wireframes, mockups and interactive\\  prototypes.\\• Supported branding and graphic design tasks.}
-\node[font=\scriptlatin\Large,text=pink!80] at ($(current page.north west)+(17.2,-14.7)$){♡};
+\node[font=\scriptlatin\Large,text=pink!80] at ($(current page.north west)+(17.2,-14.7)$){\sym{♡}};
 \draw[->,black,line width=1pt] ($(current page.north west)+(17.5,-15.9)$)..controls +(.6,.2) and +(.1,-.5)..++(.8,-.8);
 
 % bottom papers
@@ -101,7 +105,7 @@
 \putnode[font=\monolatin\small,text=black]{13.75cm}{22.05cm}{4.75cm}{\textbf{FunTime Mobile App} \hfill \colorbox{yellow!55}{2022}\\A lifestyle community app that\\helps users discover and share\\exciting experiences.\\• My Role: Lead Designer\\[5pt]\rule{4.1cm}{.3pt}\\[5pt]\textbf{Travel Planner Web} \hfill \colorbox{yellow!55}{2021}\\A web platform for personalized\\travel planning and itinerary\\management.\\• My Role: UI UX Designer}
 \paperbox{5.2cm}{26.5cm}{10.2cm}{1.45cm}{paper}
 \node[font=\monolatin\normalsize\itshape,text=black] at ($(current page.north west)+(10.3,-27.2)$){The best design is the one that solves\\problems and creates emotions.};
-\node[font=\scriptlatin\Large,text=pink] at ($(current page.north west)+(15.2,-27.25)$){♡};
+\node[font=\scriptlatin\Large,text=pink] at ($(current page.north west)+(15.2,-27.25)$){\sym{♡}};
 \draw[->,black,line width=1pt] ($(current page.north west)+(16.3,-28.1)$)--++(1.2,.22);
 
 \end{tikzpicture}

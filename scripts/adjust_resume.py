@@ -12,11 +12,13 @@ from pathlib import Path
 from typing import Dict, Iterable, Optional
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-OUTPUTS_DIR = (PROJECT_ROOT / "outputs").resolve()
+WORKSPACE_ROOT = Path.cwd().resolve()
+OUTPUTS_DIR = (WORKSPACE_ROOT / "outputs").resolve()
 BEGIN_MARKER = "% RESUME_FACTORY_LAYOUT_BEGIN"
 END_MARKER = "% RESUME_FACTORY_LAYOUT_END"
 CONTROL_OPTIONS = {
+    "ResumeBodyFontSize": "body_font_size",
+    "ResumeBodyLeading": "body_leading",
     "ResumeSectionGap": "section_gap",
     "ResumeLineStretch": "line_stretch",
     "ResumeBottomInset": "bottom_inset",
@@ -26,6 +28,7 @@ CONTROL_OPTIONS = {
 }
 DIMENSION_PATTERN = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:pt|mm|cm|em|ex)$")
 NUMBER_PATTERN = re.compile(r"^(?:\d+(?:\.\d*)?|\.\d+)$")
+POINT_PATTERN = re.compile(r"^(\d+(?:\.\d*)?|\.\d+)pt$")
 
 
 def path_is_within(path: Path, directory: Path) -> bool:
@@ -44,6 +47,8 @@ def parse_args(argv: Optional[Iterable[str]] = None) -> argparse.Namespace:
         )
     )
     parser.add_argument("tex_path", type=Path)
+    parser.add_argument("--body-font-size")
+    parser.add_argument("--body-leading")
     parser.add_argument("--section-gap")
     parser.add_argument("--line-stretch")
     parser.add_argument("--bottom-inset")
@@ -58,6 +63,14 @@ def validate_values(values: Dict[str, str]) -> Optional[str]:
         if macro == "ResumeLineStretch":
             if not NUMBER_PATTERN.fullmatch(value) or not 0.8 <= float(value) <= 1.2:
                 return f"{macro} must be a number from 0.8 through 1.2."
+        elif macro in {"ResumeBodyFontSize", "ResumeBodyLeading"}:
+            match = POINT_PATTERN.fullmatch(value)
+            if not match:
+                return f"{macro} must be a positive point size such as 8pt or 9.25pt."
+            size = float(match.group(1))
+            lower, upper = (3.0, 14.0) if macro == "ResumeBodyFontSize" else (3.0, 20.0)
+            if not lower <= size <= upper:
+                return f"{macro} must be from {lower:g}pt through {upper:g}pt."
         elif not DIMENSION_PATTERN.fullmatch(value):
             return f"{macro} must be a TeX dimension such as 4pt, 8mm, or -1.5mm."
     return None

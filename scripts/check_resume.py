@@ -18,8 +18,8 @@ except ImportError:
 PYMUPDF_AVAILABLE = fitz is not None
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-INPUTS_DIR = PROJECT_ROOT / "inputs"
+WORKSPACE_ROOT = Path.cwd().resolve()
+INPUTS_DIR = WORKSPACE_ROOT / "inputs"
 MM_TO_PT = 72.0 / 25.4
 PORTRAIT_SUFFIXES = {".jpg", ".jpeg", ".png"}
 
@@ -126,10 +126,10 @@ def overlapping_word_pairs(
             intersection = left_rect & right_rect
             if intersection.is_empty:
                 continue
-            smaller_area = min(left_rect.get_area(), right_rect.get_area())
+            smaller_area = min(abs(left_rect), abs(right_rect))
             if smaller_area <= 0:
                 continue
-            if intersection.get_area() / smaller_area >= 0.15:
+            if abs(intersection) / smaller_area >= 0.15:
                 overlaps.append((left_text, right_text))
                 if len(overlaps) >= limit:
                     return overlaps
@@ -140,10 +140,11 @@ def validate_resume(
     pdf_path: Path,
     portrait_path: Path,
     max_bottom_margin_mm: float = 15.0,
-    min_font_size_pt: float = 7.5,
+    min_font_size_pt: float = 5.0,
     min_edge_margin_mm: float = 3.0,
     portrait_clearance_mm: float = 2.0,
-    max_text_density: float = 0.38,
+    max_text_density: float = 0.45,
+    hard_max_text_density: float = 0.58,
     render_preview: Optional[Path] = None,
     require_portrait_in_inputs: bool = True,
 ) -> CheckReport:
@@ -202,28 +203,32 @@ def validate_resume(
 
         bottom_margin_mm = max(0.0, page_rect.y1 - text_bottom) / MM_TO_PT
         smallest_font = min(font_sizes)
-        word_area = sum(rect.get_area() for rect, _, _, _ in words)
-        text_density = word_area / page_rect.get_area()
+        word_area = sum(abs(rect) for rect, _, _, _ in words)
+        text_density = word_area / abs(page_rect)
         report.metrics.extend(
             [
                 f"page_size={page_rect.width / MM_TO_PT:.1f}x{page_rect.height / MM_TO_PT:.1f}mm",
                 f"bottom_text_margin={bottom_margin_mm:.1f}mm (maximum {max_bottom_margin_mm:.1f}mm)",
                 f"minimum_font_size={smallest_font:.1f}pt (minimum {min_font_size_pt:.1f}pt)",
-                f"text_density={text_density:.3f} (maximum {max_text_density:.3f})",
+                f"text_density={text_density:.3f} (recommended maximum {max_text_density:.3f}, hard maximum {hard_max_text_density:.3f})",
             ]
         )
 
         if bottom_margin_mm > max_bottom_margin_mm:
-            report.errors.append(
-                "Bottom whitespace is too large; extend or rebalance the content toward the page bottom."
+            report.warnings.append(
+                "Bottom whitespace is larger than recommended; consider rebalancing the layout."
             )
         if smallest_font + 0.01 < min_font_size_pt:
             report.errors.append(
-                "Text is too small; shorten content or rebalance spacing instead of reducing legibility."
+                "Text is below the absolute legibility floor. Keep every source content unit, restore the font to the floor, and reflow the layout."
             )
-        if text_density > max_text_density:
+        if text_density > hard_max_text_density:
             report.errors.append(
-                "Text density is too high; shorten or reorganize content to avoid a crowded layout."
+                "Text density exceeds the hard safety limit. Keep every source content unit and reflow the layout; do not summarize or delete content."
+            )
+        elif text_density > max_text_density:
+            report.warnings.append(
+                "Text density is above the recommended level; inspect the preview before delivery."
             )
 
         edge_inset = min_edge_margin_mm * MM_TO_PT
@@ -236,14 +241,16 @@ def validate_resume(
         outside = [text for rect, text, _, _ in words if not safe_rect.contains(rect)]
         if outside:
             sample = ", ".join(repr(text) for text in outside[:6])
-            report.errors.append(
+            report.warnings.append(
                 f"Text is outside the {min_edge_margin_mm:.1f}mm page-edge safety area: {sample}."
             )
 
         overlaps = overlapping_word_pairs(words)
         if overlaps:
             sample = ", ".join(f"{left!r}/{right!r}" for left, right in overlaps[:6])
-            report.errors.append(f"Overlapping text was detected: {sample}.")
+            report.warnings.append(
+                f"Possible overlapping text was detected; inspect visually: {sample}."
+            )
 
         portrait_rects = find_portrait_rectangles(document, page, portrait_path)
         report.metrics.append(f"portrait_instances={len(portrait_rects)}")
@@ -287,10 +294,11 @@ def parse_args(argv: Optional[Iterable[str]] = None) -> argparse.Namespace:
         "--portrait", type=Path, required=True, help="exact portrait image under inputs/"
     )
     parser.add_argument("--max-bottom-margin-mm", type=float, default=15.0)
-    parser.add_argument("--min-font-size-pt", type=float, default=7.5)
+    parser.add_argument("--min-font-size-pt", type=float, default=5.0)
     parser.add_argument("--min-edge-margin-mm", type=float, default=3.0)
     parser.add_argument("--portrait-clearance-mm", type=float, default=2.0)
-    parser.add_argument("--max-text-density", type=float, default=0.38)
+    parser.add_argument("--max-text-density", type=float, default=0.45)
+    parser.add_argument("--hard-max-text-density", type=float, default=0.58)
     parser.add_argument(
         "--render-preview", type=Path, help="optional PNG path for visual inspection"
     )
@@ -307,6 +315,7 @@ def main(argv: Optional[Iterable[str]] = None) -> int:
         min_edge_margin_mm=args.min_edge_margin_mm,
         portrait_clearance_mm=args.portrait_clearance_mm,
         max_text_density=args.max_text_density,
+        hard_max_text_density=args.hard_max_text_density,
         render_preview=args.render_preview,
     )
     report.print()

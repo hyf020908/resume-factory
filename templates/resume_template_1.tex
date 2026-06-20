@@ -9,14 +9,16 @@
 \usepackage{graphicx}
 \usepackage{fontawesome5}
 \pagestyle{empty}
-\setmainfont{TeXGyreHeros}
-\setsansfont{TeXGyreHeros}
-\setmonofont{Noto Sans Mono CJK SC}
-\setCJKmainfont{Noto Sans CJK SC}
-\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
-\newfontfamily\seriflatin{TeXGyreTermes}
-\newfontfamily\scriptlatin{TeXGyreChorus}
-\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setmainfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setCJKmainfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\newCJKfontfamily\cjkserif{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\newfontfamily\seriflatin{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\scriptlatin{texgyrechorus-mediumitalic.otf}[BoldFont=texgyrechorus-mediumitalic.otf,BoldFeatures={FakeBold=1.5}]
+\newfontfamily\monolatin{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
 \setlength{\parindent}{0pt}
 \newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
 \newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
@@ -54,10 +56,10 @@
 \putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{16.85cm}{5cm}{PROJECTS}
 \putnode[font=\sffamily\small, text=textgray]{8.2cm}{17.65cm}{2.2cm}{2023}
 \putnode[font=\sffamily\small, text=textgray]{11.45cm}{17.65cm}{7.8cm}{\textbf{PROJECT NAME}\\Designed a comprehensive dashboard for analytics platform\\to visualize complex data and improve decision-making.}
-\putnode[font=\sffamily\small, text=textgray]{8.2cm}{19.10cm}{2.2cm}{2022}
-\putnode[font=\sffamily\small, text=textgray]{11.45cm}{19.10cm}{7.8cm}{\textbf{PROJECT NAME}\\Redesigned the mobile app experience with a focus on\\simplicity, usability, and accessibility.}
-\putnode[font=\sffamily\small, text=textgray]{8.2cm}{20.65cm}{2.2cm}{2021}
-\putnode[font=\sffamily\small, text=textgray]{11.45cm}{20.65cm}{7.8cm}{\textbf{PROJECT NAME}\\Created a scalable design system to unify product experience\\across web and mobile platforms.}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{19.30cm}{2.2cm}{2022}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{19.30cm}{7.8cm}{\textbf{PROJECT NAME}\\Redesigned the mobile app experience with a focus on\\simplicity, usability, and accessibility.}
+\putnode[font=\sffamily\small, text=textgray]{8.2cm}{20.85cm}{2.2cm}{2021}
+\putnode[font=\sffamily\small, text=textgray]{11.45cm}{20.85cm}{7.8cm}{\textbf{PROJECT NAME}\\Created a scalable design system to unify product experience\\across web and mobile platforms.}
 \tinysep{8.2cm}{22.05cm}{19.5cm}{gray!35,line width=.5pt}
 
 \putnode[font=\sffamily\bfseries\large\addfontfeatures{LetterSpace=8}]{8.2cm}{22.55cm}{5cm}{EDUCATION}

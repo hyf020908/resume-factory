@@ -9,14 +9,16 @@
 \usepackage{graphicx}
 \usepackage{fontawesome5}
 \pagestyle{empty}
-\setmainfont{TeXGyreHeros}
-\setsansfont{TeXGyreHeros}
-\setmonofont{Noto Sans Mono CJK SC}
-\setCJKmainfont{Noto Sans CJK SC}
-\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
-\newfontfamily\seriflatin{TeXGyreTermes}
-\newfontfamily\scriptlatin{TeXGyreChorus}
-\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setmainfont{texgyreadventor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreadventor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setCJKmainfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\newCJKfontfamily\cjkserif{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\newfontfamily\seriflatin{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\scriptlatin{texgyrechorus-mediumitalic.otf}[BoldFont=texgyrechorus-mediumitalic.otf,BoldFeatures={FakeBold=1.5}]
+\newfontfamily\monolatin{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
 \setlength{\parindent}{0pt}
 \newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
 \newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
@@ -55,7 +57,7 @@
 
 % middle red experience
 \fill[red] ($(current page.north west)+(5.7,-9.05)$) rectangle ++(7.75,-14.2);
-\putnode[font=\sffamily\bfseries\fontsize{22}{24}\selectfont,text=white]{6.55cm}{10.55cm}{4cm}{EXPERIENCE}
+\putnode[font=\sffamily\bfseries\fontsize{22}{24}\selectfont,text=white]{6.55cm}{10.55cm}{5.5cm}{EXPERIENCE}
 \draw[blackish,line width=1pt] ($(current page.north west)+(6.55,-11.55)$)--++(.85,0);
 \draw[blackish,line width=.9pt] ($(current page.north west)+(6.65,-12.6)$)--++(0,-7.3);
 \foreach \y in {12.6,15.9,19.1}{\fill[blackish] ($(current page.north west)+(6.65,-\y)$) circle (.14cm);}
@@ -65,14 +67,14 @@
 \fill[blue] ($(current page.north west)+(13.45,-9.05)$) rectangle ($(current page.north east)+(-.45,-23.25)$);
 \putnode[font=\sffamily\bfseries\fontsize{22}{24}\selectfont,text=white]{14.1cm}{10.55cm}{4cm}{PROJECTS}
 \draw[blackish,line width=1pt] ($(current page.north west)+(14.1,-11.55)$)--++(.85,0);
-\foreach \y/\title/\year/\desc in {12.55/{BRAND IDENTITY SYSTEM}/2024/{Created a complete brand identity\\for a lifestyle startup including logo,\\colors, typography, and guidelines.},16.0/{WEBSITE REDESIGN}/2023/{Designed and prototyped a modern,\\responsive website to improve\\usability and engagement.},19.45/{PRINT CAMPAIGN}/2022/{Conceptualized and designed a\\print campaign for a cultural\\exhibition series.}}{\fill[yellow] ($(current page.north west)+(14.1,-\y+.12)$) rectangle ++(.22,-.22);\putnode[font=\sffamily\small,text=white]{14.7cm}{\y-.2cm}{4.5cm}{\textbf{\large \title}\\\year\\[4pt]\desc};\draw[blackish,line width=.7pt] ($(current page.north west)+(14.1,-\y-2.3)$)--++(5.3,0);}
+\foreach \y/\title/\year/\desc in {12.55cm/{BRAND IDENTITY SYSTEM}/2024/{Created a complete brand identity\\for a lifestyle startup including logo,\\colors, typography, and guidelines.},16.0cm/{WEBSITE REDESIGN}/2023/{Designed and prototyped a modern,\\responsive website to improve\\usability and engagement.},19.45cm/{PRINT CAMPAIGN}/2022/{Conceptualized and designed a\\print campaign for a cultural\\exhibition series.}}{\fill[yellow] ($(current page.north west)+(14.1,-\y+.12)$) rectangle ++(.22,-.22);\putnode[font=\sffamily\small,text=white]{14.7cm}{\dimexpr\y-.2cm\relax}{4.5cm}{\textbf{\large \title}\\\year\\[4pt]\desc}\draw[blackish,line width=.7pt] ($(current page.north west)+(14.1,-\y-2.3)$)--++(5.3,0);}
 
 % education bottom
 \fill[blackish] ($(current page.south west)+(5.7,.45)$) rectangle ++(2.35,5.9);
 \fill[cream] ($(current page.south west)+(8.05,.45)$) rectangle ($(current page.south east)+(-4.1,6.35)$);
 \fill[red] ($(current page.south east)+(-4.1,.45)$) -- ++(4.1,4.0) -- ++(0,-4.0) -- cycle;
 \fill[yellow] ($(current page.south east)+(-4.1,.45)$) rectangle ++(4.1,2.7);
-\putnode[font=\sffamily\bfseries\fontsize{21}{24}\selectfont,text=blackish]{8.85cm}{23.75cm}{4cm}{EDUCATION}
+\putnode[font=\sffamily\bfseries\fontsize{21}{24}\selectfont,text=blackish]{8.85cm}{23.75cm}{5.5cm}{EDUCATION}
 \draw[blackish,line width=1pt] ($(current page.north west)+(8.85,-24.55)$)--++(.75,0);
 \draw[blackish,line width=.9pt] ($(current page.north west)+(9.0,-25.25)$)--++(0,-2.3);
 \fill[blackish] ($(current page.north west)+(9.0,-25.25)$) circle (.14cm);\fill[blackish] ($(current page.north west)+(9.0,-27.55)$) circle (.14cm);

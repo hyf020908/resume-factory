@@ -9,14 +9,18 @@
 \usepackage{graphicx}
 \usepackage{fontawesome5}
 \pagestyle{empty}
-\setmainfont{TeXGyreHeros}
-\setsansfont{TeXGyreHeros}
-\setmonofont{Noto Sans Mono CJK SC}
-\setCJKmainfont{Noto Sans CJK SC}
-\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
-\newfontfamily\seriflatin{TeXGyreTermes}
-\newfontfamily\scriptlatin{TeXGyreChorus}
-\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setmainfont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setCJKmainfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\newCJKfontfamily\cjkserif{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\newfontfamily\seriflatin{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\scriptlatin{texgyrechorus-mediumitalic.otf}[BoldFont=texgyrechorus-mediumitalic.otf,BoldFeatures={FakeBold=1.5}]
+\newfontfamily\monolatin{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\symbolfont{FreeSerif.otf}
+\newcommand{\sym}[1]{{\mdseries\upshape\symbolfont #1}}
 \setlength{\parindent}{0pt}
 \newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
 \newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
@@ -44,7 +48,7 @@
 \draw[line,rounded corners=8pt,fill=panel,blur shadow={shadow blur steps=5,shadow opacity=.25}] ($(current page.north west)+(0.55,-1.15)$) rectangle ($(current page.north west)+(20.45,-4.95)$);
 \putnode[font=\sffamily\bfseries\fontsize{30}{34}\selectfont\addfontfeatures{LetterSpace=12},text=whiteish]{1.3cm}{1.95cm}{7.9cm}{YOUR NAME\textcolor{purple}{\rule{.7cm}{.08cm}}}
 \putnode[font=\monolatin\Large\bfseries,text=cyan]{1.42cm}{3.42cm}{6cm}{FULL STACK DEVELOPER}
-\putnode[font=\monolatin\small,text=whiteish!60]{1.42cm}{4.1cm}{7.5cm}{[ BUILDER  ✦  PROBLEM SOLVER  ✦  TECH ENTHUSIAST ]}
+\putnode[font=\monolatin\small,text=whiteish!60]{1.42cm}{4.1cm}{7.5cm}{[ BUILDER  \sym{✦}  PROBLEM SOLVER  \sym{✦}  TECH ENTHUSIAST ]}
 \draw[line,rounded corners=6pt,fill=bg!60] ($(current page.north west)+(11.25,-1.52)$) rectangle ($(current page.north west)+(16.35,-4.58)$);
 \putnode[font=\monolatin\scriptsize,text=whiteish]{11.65cm}{1.78cm}{4.3cm}{\textcolor{cyan}{\faIcon{envelope}}\quad youremail@example.com\\[8pt]\textcolor{cyan}{\faIcon{phone}}\quad +1 (555) 123-4567\\[8pt]\textcolor{cyan}{\faIcon{map-marker-alt}}\quad San Francisco, CA\\[8pt]\textcolor{cyan}{\faIcon{globe}}\quad yourwebsite.dev\\[8pt]\textcolor{cyan}{\faIcon{github}}\quad github.com/yourusername}
 \draw[line,densely dotted,rounded corners=5pt] ($(current page.north west)+(17.0,-1.52)$) rectangle ($(current page.north west)+(20.0,-4.58)$);
@@ -61,7 +65,7 @@
 \draw[line width=8pt,purple] ($(current page.north west)+(2.1,-10.8)$) circle (.62cm);
 \draw[line width=8pt,cyan] ($(current page.north west)+(2.1,-10.8)$) ++(90:.62cm) arc (90:-70:.62cm);
 \node[circle,fill=panel,minimum size=1cm] at ($(current page.north west)+(2.1,-10.8)$) {};
-\putnode[font=\monolatin\scriptsize,text=whiteish!85]{3.55cm}{9.85cm}{2.4cm}{\textcolor{cyan}{●} Frontend \hfill 60\%\\[4pt]\textcolor{purple}{●} Backend \hfill 30\%\\[4pt]\textcolor{purple!70}{●} DevOps \hfill 10\%}
+\putnode[font=\monolatin\scriptsize,text=whiteish!85]{3.55cm}{9.85cm}{2.4cm}{\textcolor{cyan}{\sym{●}} Frontend \hfill 60\%\\[4pt]\textcolor{purple}{\sym{●}} Backend \hfill 30\%\\[4pt]\textcolor{purple!70}{\sym{●}} DevOps \hfill 10\%}
 \putnode[font=\monolatin\scriptsize,text=whiteish]{6.55cm}{9.35cm}{2cm}{ACTIVITY\\\textcolor{whiteish!50}{(Last 12 Weeks)}}
 \draw[whiteish!20,line width=.3pt] ($(current page.north west)+(7.1,-11.1)$)--++(4.4,0);
 \draw[cyan,line width=.8pt] plot[smooth] coordinates {($(current page.north west)+(7.2,-10.75)$) ($(current page.north west)+(7.7,-10.35)$) ($(current page.north west)+(8.2,-10.55)$) ($(current page.north west)+(8.75,-10.25)$) ($(current page.north west)+(9.2,-10.6)$) ($(current page.north west)+(9.75,-10.15)$) ($(current page.north west)+(10.3,-10.42)$) ($(current page.north west)+(10.9,-10.2)$) ($(current page.north west)+(11.5,-9.6)$)};

@@ -9,14 +9,17 @@
 \usepackage{graphicx}
 \usepackage{fontawesome5}
 \pagestyle{empty}
-\setmainfont{TeXGyreHeros}
-\setsansfont{TeXGyreHeros}
-\setmonofont{Noto Sans Mono CJK SC}
-\setCJKmainfont{Noto Sans CJK SC}
-\newCJKfontfamily\cjkserif{Noto Serif CJK SC}
-\newfontfamily\seriflatin{TeXGyreTermes}
-\newfontfamily\scriptlatin{TeXGyreChorus}
-\newfontfamily\monolatin{Noto Sans Mono CJK SC}
+\setmainfont{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setsansfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+\newCJKfontfamily\cjkserif{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\newCJKfontfamily\cjkdisplay{FandolKai-Regular.otf}
+\newfontfamily\seriflatin{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\newfontfamily\scriptlatin{texgyrechorus-mediumitalic.otf}[BoldFont=texgyrechorus-mediumitalic.otf,BoldFeatures={FakeBold=1.5}]
+\newfontfamily\monolatin{texgyrecursor}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
 \setlength{\parindent}{0pt}
 \newcommand{\putnode}[5][]{\node[anchor=north west, inner sep=0pt, text width=#4, align=left, #1] at ($(current page.north west)+(#2,-#3)$) {#5};}
 \newcommand{\tinysep}[4]{\draw[#4] ($(current page.north west)+(#1,-#2)$)--($(current page.north west)+(#3,-#2)$);}
@@ -45,7 +48,7 @@
 \draw[ink!45] ($(current page.south west)+(4.4,2.0)$)--++(.25,.8)--++(.2,-.75);
 
 % left name panel
-\putnode[font=\cjkserif\fontsize{42}{48}\selectfont, text=ink, align=center]{1.9cm}{2.55cm}{3.1cm}{林\\清\\晏}
+\putnode[font=\cjkdisplay\fontsize{42}{48}\selectfont, text=ink, align=center]{1.9cm}{2.55cm}{3.1cm}{林\\清\\晏}
 \draw[ink!55,line width=.45pt] ($(current page.north west)+(1.15,-3.3)$)--++(0,-3.8);
 \draw[ink!55,line width=.45pt] ($(current page.north west)+(5.45,-3.3)$)--++(0,-6.7);
 \node[rounded corners=5pt,draw=redseal,fill=redseal!10,text=redseal,font=\cjkserif\large,inner sep=3pt] at ($(current page.north west)+(5.35,-3.65)$) {简\\历};
